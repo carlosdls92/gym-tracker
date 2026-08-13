@@ -1,0 +1,375 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Día 1 — Rutina Gym</title>
+<link rel="stylesheet" href="css/day.css">
+</head>
+<body data-total="10">
+
+<header data-day="1">
+  <div class="label-day">Gym CAR — Nacho</div>
+  <h1>DÍA<br>UNO</h1>
+  <div class="subtitle">Piernas · Pecho · Espalda · Brazos · Core</div>
+  <div class="muscle-tags">
+    <span class="tag">Cuádriceps</span><span class="tag">Isquiotibiales</span><span class="tag">Espalda baja</span>
+    <span class="tag">Pecho</span><span class="tag">Dorsal</span><span class="tag">Hombros</span>
+    <span class="tag">Bíceps</span><span class="tag">Tríceps</span><span class="tag">Core</span>
+  </div>
+</header>
+
+<div class="progress-wrap">
+  <div class="progress-header">
+    <span class="progress-label">Progreso</span>
+    <span class="progress-count" id="countDisplay">0 / 10</span>
+  </div>
+  <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressBar"></div></div>
+</div>
+
+<div class="content">
+<div style="height:18px"></div>
+
+<!-- ═══════════ CARDIO ═══════════ -->
+<div class="card" id="cardio" onclick="toggleCardio()">
+  <div class="card-imgs">
+    <div class="card-img">
+      <img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/cardio/run-equipment.gif" alt="Cardio en cinta">
+      <span class="img-tag accent">Cinta de correr</span>
+    </div>
+    <div class="card-img">
+      <img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/cardio/run.gif" alt="Carrera">
+      <span class="img-tag accent">Carrera</span>
+    </div>
+  </div>
+  <div class="cardio-info">
+    <div class="cardio-text">
+      <div class="cardio-name">Cardio</div>
+      <div class="cardio-meta">Cinta · bicicleta · elíptica &nbsp;·&nbsp; Intensidad media-baja</div>
+    </div>
+    <div class="cardio-time">12'</div>
+    <div class="check-btn" id="cardioCheck">✓</div>
+  </div>
+</div>
+
+<div class="section-title">Ejercicios · 4 × 12</div>
+
+<!-- ═══════════ 1. EXTENSIÓN CUÁDRICEPS ═══════════ -->
+<div class="card" id="ex0" onclick="toggleCard(event,0)">
+  <div class="card-imgs">
+    <div class="card-img">
+      <img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/quads/lever-leg-extension.gif" alt="Extensión cuádriceps movimiento">
+      <span class="img-tag">Movimiento</span>
+    </div>
+    <div class="card-img">
+      <img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/quads/resistance-band-leg-extension.gif" alt="Extensión cuádriceps variante">
+      <span class="img-tag accent">Variante</span>
+    </div>
+  </div>
+  <div class="card-info">
+    <div class="card-text">
+      <div class="card-name">Extensión de cuádriceps</div>
+      <div class="card-sub">
+        <span class="muscle-badge">Cuádriceps</span>
+        <span class="expand-hint">↓ técnica</span>
+      </div>
+    </div>
+    <div class="card-right">
+      <div class="sets-row"><div class="set-dot"></div><div class="set-dot"></div><div class="set-dot"></div><div class="set-dot"></div></div>
+      <div class="reps-label">4×12</div>
+      <div class="check-btn" id="check0">✓</div>
+    </div>
+  </div>
+  <div class="card-detail" id="detail0">
+    <div class="detail-body">
+      <div class="detail-text">Sentado en la máquina, respaldo recto, rodillo sobre el empeine. Extiende las piernas hasta la posición recta contrayendo el cuádriceps. Baja controlado sin dejar caer el peso.</div>
+      <div class="detail-tags"><span class="detail-tag">Máquina</span><span class="detail-tag">Aislamiento</span><span class="detail-tag">Cuádriceps</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ 2. PRENSA ═══════════ -->
+<div class="card" id="ex1" onclick="toggleCard(event,1)">
+  <div class="card-imgs">
+    <div class="card-img">
+      <img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/quads/lever-alternate-leg-press.gif" alt="Prensa piernas movimiento">
+      <span class="img-tag">Movimiento</span>
+    </div>
+    <div class="card-img">
+      <img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/quads/barbell-bench-squat.gif" alt="Prensa piernas variante">
+      <span class="img-tag accent">Sentadilla banco</span>
+    </div>
+  </div>
+  <div class="card-info">
+    <div class="card-text">
+      <div class="card-name">Prensa</div>
+      <div class="card-sub">
+        <span class="muscle-badge">Cuádriceps</span>
+        <span class="expand-hint">↓ técnica</span>
+      </div>
+    </div>
+    <div class="card-right">
+      <div class="sets-row"><div class="set-dot"></div><div class="set-dot"></div><div class="set-dot"></div><div class="set-dot"></div></div>
+      <div class="reps-label">4×12</div>
+      <div class="check-btn" id="check1">✓</div>
+    </div>
+  </div>
+  <div class="card-detail" id="detail1">
+    <div class="detail-body">
+      <div class="detail-text">Pies a la anchura de caderas sobre la plataforma. Baja el peso flexionando rodillas hasta 90° sin despegar la espalda baja del respaldo. Empuja desde los talones hasta casi extender las piernas.</div>
+      <div class="detail-tags"><span class="detail-tag">Máquina</span><span class="detail-tag">Compuesto</span><span class="detail-tag">Cuádriceps · Glúteos</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ 3. DEADLIFT ═══════════ -->
+<div class="card" id="ex2" onclick="toggleCard(event,2)">
+  <div class="card-imgs">
+    <div class="card-img">
+      <img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/glutes/barbell-deadlift.gif" alt="Deadlift movimiento">
+      <span class="img-tag">Movimiento</span>
+    </div>
+    <div class="card-img">
+      <img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/glutes/dumbbell-deadlift.gif" alt="Deadlift con mancuernas">
+      <span class="img-tag accent">Con mancuernas</span>
+    </div>
+  </div>
+  <div class="card-info">
+    <div class="card-text">
+      <div class="card-name">Deadlift</div>
+      <div class="card-sub">
+        <span class="muscle-badge">Espalda baja · Glúteos</span>
+        <span class="expand-hint">↓ técnica</span>
+      </div>
+    </div>
+    <div class="card-right">
+      <div class="sets-row"><div class="set-dot"></div><div class="set-dot"></div><div class="set-dot"></div><div class="set-dot"></div></div>
+      <div class="reps-label">4×12</div>
+      <div class="check-btn" id="check2">✓</div>
+    </div>
+  </div>
+  <div class="card-detail" id="detail2">
+    <div class="detail-body">
+      <div class="detail-text">Pies a la anchura de caderas, barra sobre los pies. Agarre doble supino o mixto. Espalda recta, pecho arriba. Levanta empujando el suelo con los pies mientras extiendes cadera y rodillas simultáneamente.</div>
+      <div class="detail-tags"><span class="detail-tag">Barra</span><span class="detail-tag">Compuesto</span><span class="detail-tag">Erector espinal</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ 4. PRESS DE PECHO ═══════════ -->
+<div class="card" id="ex3" onclick="toggleCard(event,3)">
+  <div class="card-imgs">
+    <div class="card-img">
+      <img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/pectorals/barbell-bench-press.gif" alt="Press pecho movimiento">
+      <span class="img-tag">Movimiento</span>
+    </div>
+    <div class="card-img">
+      <img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/pectorals/dumbbell-bench-press.gif" alt="Press pecho con mancuernas">
+      <span class="img-tag accent">Con mancuernas</span>
+    </div>
+  </div>
+  <div class="card-info">
+    <div class="card-text">
+      <div class="card-name">Press de pecho</div>
+      <div class="card-sub">
+        <span class="muscle-badge">Pectorales</span>
+        <span class="expand-hint">↓ técnica</span>
+      </div>
+    </div>
+    <div class="card-right">
+      <div class="sets-row"><div class="set-dot"></div><div class="set-dot"></div><div class="set-dot"></div><div class="set-dot"></div></div>
+      <div class="reps-label">4×12</div>
+      <div class="check-btn" id="check3">✓</div>
+    </div>
+  </div>
+  <div class="card-detail" id="detail3">
+    <div class="detail-body">
+      <div class="detail-text">Tumbado en banco plano, agarre ligeramente más ancho que los hombros. Baja la barra hasta rozar el pecho en línea con los pezones. Empuja verticalmente hacia arriba sin bloquear los codos.</div>
+      <div class="detail-tags"><span class="detail-tag">Barra / mancuernas</span><span class="detail-tag">Compuesto</span><span class="detail-tag">Pecho · Tríceps · Hombro anterior</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ 5. JALÓN ABIERTO ═══════════ -->
+<div class="card" id="ex4" onclick="toggleCard(event,4)">
+  <div class="card-imgs">
+    <div class="card-img">
+      <img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/lats/cable-bar-lateral-pulldown.gif" alt="Jalón abierto movimiento">
+      <span class="img-tag">Movimiento</span>
+    </div>
+    <div class="card-img">
+      <img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/lats/cable-pulldown.gif" alt="Jalón abierto cable">
+      <span class="img-tag accent">En cable</span>
+    </div>
+  </div>
+  <div class="card-info">
+    <div class="card-text">
+      <div class="card-name">Jalón abierto</div>
+      <div class="card-sub">
+        <span class="muscle-badge">Dorsal ancho</span>
+        <span class="expand-hint">↓ técnica</span>
+      </div>
+    </div>
+    <div class="card-right">
+      <div class="sets-row"><div class="set-dot"></div><div class="set-dot"></div><div class="set-dot"></div><div class="set-dot"></div></div>
+      <div class="reps-label">4×12</div>
+      <div class="check-btn" id="check4">✓</div>
+    </div>
+  </div>
+  <div class="card-detail" id="detail4">
+    <div class="detail-body">
+      <div class="detail-text">Agarre amplio en barra de polea. Lleva la barra hacia el pecho superior inclinando ligeramente el torso atrás. Contrae los dorsales apretando los omóplatos. Sube controlado sin soltar de golpe.</div>
+      <div class="detail-tags"><span class="detail-tag">Polea alta</span><span class="detail-tag">Agarre ancho</span><span class="detail-tag">Dorsal · Redondo mayor</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ 6. LATERALES DE HOMBROS ═══════════ -->
+<div class="card" id="ex5" onclick="toggleCard(event,5)">
+  <div class="card-imgs">
+    <div class="card-img">
+      <img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/delts/dumbbell-lateral-raise.gif" alt="Laterales hombro movimiento">
+      <span class="img-tag">Movimiento</span>
+    </div>
+    <div class="card-img">
+      <img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/delts/cable-lateral-raise.gif" alt="Laterales hombro cable">
+      <span class="img-tag accent">En cable</span>
+    </div>
+  </div>
+  <div class="card-info">
+    <div class="card-text">
+      <div class="card-name">Laterales de hombros</div>
+      <div class="card-sub">
+        <span class="muscle-badge">Deltoides lateral</span>
+        <span class="expand-hint">↓ técnica</span>
+      </div>
+    </div>
+    <div class="card-right">
+      <div class="sets-row"><div class="set-dot"></div><div class="set-dot"></div><div class="set-dot"></div><div class="set-dot"></div></div>
+      <div class="reps-label">4×12</div>
+      <div class="check-btn" id="check5">✓</div>
+    </div>
+  </div>
+  <div class="card-detail" id="detail5">
+    <div class="detail-body">
+      <div class="detail-text">De pie con mancuernas, codos ligeramente doblados. Eleva los brazos a los lados hasta la altura del hombro (en T). El meñique ligeramente más alto que el pulgar. Baja controlado en 2-3 segundos.</div>
+      <div class="detail-tags"><span class="detail-tag">Mancuernas</span><span class="detail-tag">Elevación lateral</span><span class="detail-tag">Deltoides medial</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ 7. MARTILLO ═══════════ -->
+<div class="card" id="ex6" onclick="toggleCard(event,6)">
+  <div class="card-imgs">
+    <div class="card-img">
+      <img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/biceps/dumbbell-hammer-curl.gif" alt="Curl martillo movimiento">
+      <span class="img-tag">Movimiento</span>
+    </div>
+    <div class="card-img">
+      <img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/biceps/dumbbell-hammer-curl-v-2.gif" alt="Curl martillo variante">
+      <span class="img-tag accent">Variante</span>
+    </div>
+  </div>
+  <div class="card-info">
+    <div class="card-text">
+      <div class="card-name">Martillo</div>
+      <div class="card-sub">
+        <span class="muscle-badge">Bíceps · Braquial</span>
+        <span class="expand-hint">↓ técnica</span>
+      </div>
+    </div>
+    <div class="card-right">
+      <div class="sets-row"><div class="set-dot"></div><div class="set-dot"></div><div class="set-dot"></div><div class="set-dot"></div></div>
+      <div class="reps-label">4×12</div>
+      <div class="check-btn" id="check6">✓</div>
+    </div>
+  </div>
+  <div class="card-detail" id="detail6">
+    <div class="detail-body">
+      <div class="detail-text">De pie con mancuernas en agarre neutro (pulgar arriba). Codos pegados al torso. Flexiona llevando la mancuerna hacia el hombro sin rotar la muñeca. Baja lentamente. Alterna brazos o hazlo simultáneo.</div>
+      <div class="detail-tags"><span class="detail-tag">Mancuernas</span><span class="detail-tag">Curl neutro</span><span class="detail-tag">Braquial · Braquiorradial</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ 8. FONDOS ═══════════ -->
+<div class="card" id="ex7" onclick="toggleCard(event,7)">
+  <div class="card-imgs">
+    <div class="card-img">
+      <img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/triceps/bench-dip-knees-bent.gif" alt="Fondos banco movimiento">
+      <span class="img-tag">En banco</span>
+    </div>
+    <div class="card-img">
+      <img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/pectorals/chest-dip.gif" alt="Fondos paralelas">
+      <span class="img-tag accent">En paralelas</span>
+    </div>
+  </div>
+  <div class="card-info">
+    <div class="card-text">
+      <div class="card-name">Fondos</div>
+      <div class="card-sub">
+        <span class="muscle-badge">Tríceps · Pecho</span>
+        <span class="expand-hint">↓ técnica</span>
+      </div>
+    </div>
+    <div class="card-right">
+      <div class="sets-row"><div class="set-dot"></div><div class="set-dot"></div><div class="set-dot"></div><div class="set-dot"></div></div>
+      <div class="reps-label">4×12</div>
+      <div class="check-btn" id="check7">✓</div>
+    </div>
+  </div>
+  <div class="card-detail" id="detail7">
+    <div class="detail-body">
+      <div class="detail-text">En paralelas o banco, cuerpo erguido para enfatizar tríceps. Baja flexionando codos hasta 90°, manteniendo los codos cerca del cuerpo. Empuja hasta extender los brazos sin hiperextender los codos.</div>
+      <div class="detail-tags"><span class="detail-tag">Peso corporal</span><span class="detail-tag">Compuesto</span><span class="detail-tag">Tríceps · Pecho inferior</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ 9. ABDOMINALES ═══════════ -->
+<div class="card" id="ex8" onclick="toggleCard(event,8)">
+  <div class="card-imgs">
+    <div class="card-img">
+      <img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/abs/crunch-floor.gif" alt="Abdominales crunch movimiento">
+      <span class="img-tag">Movimiento</span>
+    </div>
+    <div class="card-img">
+      <img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/abs/crunch-hands-overhead.gif" alt="Abdominales brazos arriba">
+      <span class="img-tag accent">Brazos arriba</span>
+    </div>
+  </div>
+  <div class="card-info">
+    <div class="card-text">
+      <div class="card-name">Abdominales</div>
+      <div class="card-sub">
+        <span class="muscle-badge">Core</span>
+        <span class="expand-hint">↓ técnica</span>
+      </div>
+    </div>
+    <div class="card-right">
+      <div class="sets-row"><div class="set-dot"></div><div class="set-dot"></div><div class="set-dot"></div><div class="set-dot"></div></div>
+      <div class="reps-label">4×12</div>
+      <div class="check-btn" id="check8">✓</div>
+    </div>
+  </div>
+  <div class="card-detail" id="detail8">
+    <div class="detail-body">
+      <div class="detail-text">Crunch en suelo, rodillas dobladas, pies apoyados. Exhala al contraer el abdomen llevando el esternón hacia las caderas. No tires del cuello. Baja lento manteniendo tensión.</div>
+      <div class="detail-tags"><span class="detail-tag">Peso corporal</span><span class="detail-tag">Crunch</span><span class="detail-tag">Recto abdominal</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="complete-banner" id="completeBanner">
+  <div class="complete-emoji">🔥</div>
+  <div class="complete-title">SESIÓN COMPLETADA</div>
+  <div class="complete-sub">Día 1 terminado · Buen trabajo</div>
+</div>
+
+<div class="source-credit">Imágenes: <a href="https://github.com/JahelCuadrado/ExerciseGymGifsDB" target="_blank">ExerciseGymGifsDB</a> vía jsDelivr CDN</div>
+<div class="footer" style="padding:8px 0 0">DLS Gym Tracker · Día 1</div>
+</div>
+
+<script src="js/day.js"></script>
+</body>
+</html>

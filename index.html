@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GYM CAR — Rutinas</title>
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div>
+    <div class="topbar-brand">GYM<span>·</span>CAR</div>
+  </div>
+  <div class="topbar-sub">Nacho · Rutinas</div>
+</div>
+
+<div class="hero">
+  <div class="hero-eyebrow">Tu entrenamiento</div>
+  <h1 class="hero-title">TODOS<br>LOS<br><span>DÍAS</span></h1>
+  <p class="hero-desc">Consulta tu rutina, sigue el progreso de cada sesión y descarga los entrenamientos para usarlos sin conexión.</p>
+</div>
+
+<div class="page">
+
+  <!-- ════════════════════════════════════════
+       PLAN 1 — INICIACIÓN
+  ════════════════════════════════════════ -->
+  <div class="plan">
+    <div class="plan-header">
+      <div class="plan-header-left">
+        <div class="plan-eyebrow">Plan A · Circuito de 3 días</div>
+        <div class="plan-name">Iniciación</div>
+      </div>
+      <button class="btn-dl-all" id="btn-dl-all" onclick="downloadAllDays()">↓ Descargar todo</button>
+    </div>
+    <div class="plan-divider"></div>
+
+    <div class="days-grid">
+
+      <!-- DÍA 1 -->
+      <div class="day-card">
+        <div class="day-card-top">
+          <div class="day-num-bg">1</div>
+          <div class="day-chip">Día 1</div>
+          <div class="day-title">DÍA UNO</div>
+          <div class="day-subtitle">Piernas · Pecho · Espalda · Brazos</div>
+        </div>
+        <div class="day-divider"></div>
+        <ul class="day-muscles">
+          <li>Cardio 12 min</li>
+          <li>Extensión cuádriceps · Prensa</li>
+          <li>Deadlift · Espalda baja</li>
+          <li>Press de pecho plano</li>
+          <li>Jalón abierto · Laterales</li>
+          <li>Martillo · Fondos · Abs</li>
+        </ul>
+        <div class="day-meta">12' cardio &nbsp;+&nbsp; 9 ejercicios &nbsp;·&nbsp; 4 × 12</div>
+        <div class="day-actions">
+          <a href="gym-dia1.html" class="btn-ver" target="_blank">Ver</a>
+          <button class="btn-dl" id="dl-1" onclick="downloadOffline(1, this)">↓ Offline</button>
+        </div>
+      </div>
+
+      <!-- DÍA 2 -->
+      <div class="day-card">
+        <div class="day-card-top">
+          <div class="day-num-bg">2</div>
+          <div class="day-chip">Día 2</div>
+          <div class="day-title">DÍA DOS</div>
+          <div class="day-subtitle">Piernas · Espalda · Pecho · Brazos</div>
+        </div>
+        <div class="day-divider"></div>
+        <ul class="day-muscles">
+          <li>Cardio 12 min</li>
+          <li>Femoral tumbado · Sentadillas</li>
+          <li>Deadlift rumano (RDL)</li>
+          <li>Jalón cerrado · Pecho superior</li>
+          <li>Frontales hombro</li>
+          <li>Barra bíceps · Extensión V · Abs</li>
+        </ul>
+        <div class="day-meta">12' cardio &nbsp;+&nbsp; 9 ejercicios &nbsp;·&nbsp; 4 × 12</div>
+        <div class="day-actions">
+          <a href="gym-dia2.html" class="btn-ver" target="_blank">Ver</a>
+          <button class="btn-dl" id="dl-2" onclick="downloadOffline(2, this)">↓ Offline</button>
+        </div>
+      </div>
+
+      <!-- DÍA 3 -->
+      <div class="day-card">
+        <div class="day-card-top">
+          <div class="day-num-bg">3</div>
+          <div class="day-chip">Día 3</div>
+          <div class="day-title">DÍA TRES</div>
+          <div class="day-subtitle">Aductores · Glúteos · Pecho · Espalda</div>
+        </div>
+        <div class="day-divider"></div>
+        <ul class="day-muscles">
+          <li>Máquina aductor · Abductor</li>
+          <li>Hip thrust · Glúteos</li>
+          <li>Apertura (pec deck)</li>
+          <li>Remo en máquina</li>
+          <li>Face pull · Deltoides posterior</li>
+          <li>Curl alterno · Ext. V invertida · Abs</li>
+        </ul>
+        <div class="day-meta">9 ejercicios &nbsp;·&nbsp; 4 × 12</div>
+        <div class="day-actions">
+          <a href="gym-dia3.html" class="btn-ver" target="_blank">Ver</a>
+          <button class="btn-dl" id="dl-3" onclick="downloadOffline(3, this)">↓ Offline</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       PLAN 2 — PRÓXIMAMENTE
+  ════════════════════════════════════════ -->
+  <div class="plan-placeholder">
+    <div class="plan-placeholder-icon">+</div>
+    <div class="plan-placeholder-text">
+      <div class="plan-placeholder-title">Entrenamiento 2</div>
+      <div class="plan-placeholder-sub">Próximamente · Se añadirá cuando esté listo</div>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+<footer>
+  <div class="footer-brand">GYM · CAR</div>
+  <div class="footer-note">Nacho · Rutinas de iniciación · 2025</div>
+</footer>
+
+<!-- ── DOWNLOAD OVERLAY ── -->
+<div class="dl-overlay" id="dlOverlay">
+  <div class="dl-box">
+    <div class="dl-title" id="dlTitle">Generando...</div>
+    <div class="dl-sub" id="dlSub">Descargando imágenes del ejercicio</div>
+    <div class="dl-bar-bg"><div class="dl-bar-fill" id="dlBar"></div></div>
+    <div class="dl-status" id="dlStatus">Iniciando...</div>
+    <button class="dl-cancel" onclick="cancelDownload()">Cancelar</button>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

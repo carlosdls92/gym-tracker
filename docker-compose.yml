@@ -1,0 +1,9 @@
+services:
+  gym-tracker:
+    image: nginx:alpine
+    container_name: gym-tracker
+    ports:
+      - "8095:80"
+    volumes:
+      - ./:/usr/share/nginx/html:ro
+    restart: unless-stopped

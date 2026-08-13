@@ -1,0 +1,27 @@
+name: Despliegue Automatico OMVDLS
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, omv]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy en CasaOS
+        run: |
+          mkdir -p /var/lib/casaos/apps/gym-tracker
+          rsync -a --delete \
+            --exclude='.git' \
+            --exclude='.github' \
+            . /var/lib/casaos/apps/gym-tracker/
+          cd /var/lib/casaos/apps/gym-tracker
+          docker compose down --remove-orphans || true
+          docker compose up -d
+
+      - name: Health check
+        run: |
+          sleep 3
+          curl -sf http://localhost:8095/ > /dev/null
+          echo "gym-tracker OK en :8095"
