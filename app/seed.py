@@ -21,6 +21,7 @@ def get_db():
 
 # ─── Catálogo de ejercicios ────────────────────────────────────────────────────
 EXERCISES = [
+    # ── Iniciación ────────────────────────────────────────────────────────────
     {
         "id": "cardio",
         "name": "Cardio",
@@ -143,7 +144,6 @@ EXERCISES = [
             {"label": "Brazos arriba", "accent": True,  "path": "abs/crunch-hands-overhead.gif"},
         ],
     },
-    # ── Día 2 ────────────────────────────────────────────────────────────────
     {
         "id": "femoral-tumbado",
         "name": "Femoral tumbado",
@@ -240,7 +240,6 @@ EXERCISES = [
             {"label": "Músculos",   "accent": True,  "path": "triceps/cable-pushdown-with-rope-attachment.gif"},
         ],
     },
-    # ── Día 3 ────────────────────────────────────────────────────────────────
     {
         "id": "maquina-aductor",
         "name": "Máquina aductor",
@@ -337,42 +336,384 @@ EXERCISES = [
             {"label": "Overhead",   "accent": True,  "path": "triceps/cable-overhead-triceps-extension-rope-attachment.gif"},
         ],
     },
-]
-
-# ─── Plan de entrenamiento ─────────────────────────────────────────────────────
-WORKOUT_DAYS = [
+    # ── Hipertrofia 5 ────────────────────────────────────────────────────────
     {
-        "plan": "iniciacion",
-        "day_num": 1,
-        "title": "DÍA UNO",
-        "subtitle": "Piernas · Pecho · Espalda · Brazos · Core",
-        "muscle_tags": ["Cuádriceps", "Isquiotibiales", "Espalda baja", "Pecho", "Dorsal", "Hombros", "Bíceps", "Tríceps", "Core"],
-        "has_cardio": True,
-        "total": 10,
-        "exercises": ["cardio", "ext-cuadriceps", "prensa", "deadlift", "press-pecho",
-                      "jalon-abierto", "laterales-hombros", "martillo", "fondos", "abdominales"],
+        "id": "cruces-polea",
+        "name": "Cruces de polea",
+        "type": "regular",
+        "muscle_badge": "Pectorales",
+        "technique": "Poleas altas a los lados, inclínate ligeramente adelante. Junta las manos frente al pecho describiendo un arco amplio. Mantén los codos levemente doblados durante todo el recorrido. Contrae el pecho al máximo en el punto de cruce.",
+        "tags": ["Cable", "Aislamiento", "Pectoral mayor"],
+        "gifs": [
+            {"label": "Movimiento", "accent": False, "path": "pectorals/cable-crossover.gif"},
+            {"label": "Variante",   "accent": True,  "path": "pectorals/cable-fly-mid.gif"},
+        ],
     },
     {
-        "plan": "iniciacion",
-        "day_num": 2,
+        "id": "press-hombros-db",
+        "name": "Press hombros mancuernas",
+        "type": "regular",
+        "muscle_badge": "Deltoides",
+        "technique": "Sentado o de pie con mancuernas a la altura de los hombros. Empuja hacia arriba hasta casi extender los brazos. Baja controlado hasta que los codos queden a 90° o ligeramente más abajo.",
+        "tags": ["Mancuernas", "Press vertical", "Deltoides frontal + medial"],
+        "gifs": [
+            {"label": "Movimiento", "accent": False, "path": "delts/dumbbell-shoulder-press.gif"},
+            {"label": "Sentado",    "accent": True,  "path": "delts/dumbbell-seated-shoulder-press.gif"},
+        ],
+    },
+    {
+        "id": "gemelos",
+        "name": "Gemelos",
+        "type": "regular",
+        "muscle_badge": "Gemelos",
+        "technique": "De pie en el borde de un escalón, talones fuera. Sube de puntillas lo máximo posible contrayendo los gemelos. Baja lentamente hasta sentir el estiramiento completo. No rebotas en el punto bajo.",
+        "tags": ["Peso corporal · Máquina", "Elevación de talones", "Gastrocnemio · Sóleo"],
+        "gifs": [
+            {"label": "Movimiento",  "accent": False, "path": "calves/standing-calf-raise.gif"},
+            {"label": "En máquina",  "accent": True,  "path": "calves/lever-standing-calf-raise.gif"},
+        ],
+    },
+    {
+        "id": "dominadas",
+        "name": "Dominadas",
+        "type": "regular",
+        "muscle_badge": "Dorsal ancho",
+        "technique": "Agarre prono más ancho que los hombros. Arranca desde posición colgada con escápulas bajas. Tira llevando el pecho hacia la barra. Baja controlado hasta la extensión completa sin soltar el hombro.",
+        "tags": ["Peso corporal", "Tracción vertical", "Dorsal + Redondo + Bíceps"],
+        "gifs": [
+            {"label": "Movimiento",   "accent": False, "path": "lats/pull-up.gif"},
+            {"label": "Agarre ancho", "accent": True,  "path": "lats/wide-grip-pull-up.gif"},
+        ],
+    },
+    {
+        "id": "barra-pecho-multipower",
+        "name": "Barra pecho Multipower",
+        "type": "regular",
+        "muscle_badge": "Pectorales",
+        "technique": "Press de banca en máquina Smith. Ajusta el banco plano, agarre ligeramente más ancho que los hombros. La guía controlada permite enfocarse en el pecho. Baja hasta rozar el pecho, empuja hasta casi extender.",
+        "tags": ["Multipower", "Compuesto", "Pecho + Tríceps"],
+        "gifs": [
+            {"label": "Movimiento", "accent": False, "path": "pectorals/smith-machine-chest-press.gif"},
+            {"label": "Inclinado",  "accent": True,  "path": "pectorals/barbell-incline-bench-press.gif"},
+        ],
+    },
+    {
+        "id": "remo-mancuernas",
+        "name": "Remo mancuernas",
+        "type": "regular",
+        "muscle_badge": "Dorsal · Romboides",
+        "technique": "Apoya una rodilla y mano en el banco, espalda paralela al suelo. Tira la mancuerna hacia la cadera llevando el codo lo más atrás posible. Aprieta los omóplatos en el punto alto. Baja controlado.",
+        "tags": ["Mancuernas", "Unilateral", "Dorsal + Romboides + Bíceps"],
+        "gifs": [
+            {"label": "Movimiento", "accent": False, "path": "upper-back/dumbbell-bent-over-row.gif"},
+            {"label": "Un brazo",   "accent": True,  "path": "upper-back/dumbbell-one-arm-row.gif"},
+        ],
+    },
+    {
+        "id": "serrato",
+        "name": "Serrato anterior",
+        "type": "regular",
+        "muscle_badge": "Serrato",
+        "technique": "Con mancuerna o cable, extiende el brazo por encima de la cabeza empujando la escápula hacia afuera (protracción escapular). Mantén el codo extendido. Mejora la salud del hombro y la definición lateral del tronco.",
+        "tags": ["Cable · Mancuerna", "Aislamiento", "Serrato anterior"],
+        "gifs": [
+            {"label": "Movimiento", "accent": False, "path": "pectorals/weighted-serratus-anterior-dips.gif"},
+            {"label": "Variante",   "accent": True,  "path": "lats/cable-pulldown.gif"},
+        ],
+    },
+    {
+        "id": "lumbares",
+        "name": "Extensiones lumbares",
+        "type": "regular",
+        "muscle_badge": "Espalda baja",
+        "technique": "Tumbado boca abajo en banco de extensiones con caderas sobre el pivote. Baja el torso hasta la horizontal o ligeramente más. Sube contrayendo los erectores espinales hasta alinear el cuerpo. No hiperextiendas al final.",
+        "tags": ["Banco hiperextensión", "Erector espinal", "Glúteos · Femoral"],
+        "gifs": [
+            {"label": "Movimiento", "accent": False, "path": "lower-back/hyperextension.gif"},
+            {"label": "Con peso",   "accent": True,  "path": "lower-back/weighted-back-extension.gif"},
+        ],
+    },
+    {
+        "id": "zancadas",
+        "name": "Zancadas",
+        "type": "regular",
+        "muscle_badge": "Cuádriceps · Glúteos",
+        "technique": "De pie con mancuernas o barra. Da un paso largo hacia adelante, baja la rodilla trasera casi hasta el suelo. La rodilla delantera no debe sobrepasar los dedos del pie. Empuja desde el talón delantero para volver.",
+        "tags": ["Mancuernas · Barra", "Compuesto", "Cuádriceps + Glúteo"],
+        "gifs": [
+            {"label": "Movimiento",  "accent": False, "path": "quads/barbell-lunge.gif"},
+            {"label": "Caminando",   "accent": True,  "path": "quads/dumbbell-walking-lunge.gif"},
+        ],
+    },
+    {
+        "id": "press-frances",
+        "name": "Press francés",
+        "type": "regular",
+        "muscle_badge": "Tríceps",
+        "technique": "Tumbado en banco plano con barra EZ. Baja la barra hacia la frente doblando los codos. Codos fijos apuntando al techo. Extiende los brazos contrayendo el tríceps largo. No separes los codos durante el movimiento.",
+        "tags": ["Barra EZ", "Skull crusher", "Tríceps largo"],
+        "gifs": [
+            {"label": "Movimiento",      "accent": False, "path": "triceps/barbell-lying-triceps-extension.gif"},
+            {"label": "Con mancuernas",  "accent": True,  "path": "triceps/dumbbell-lying-triceps-extension.gif"},
+        ],
+    },
+    {
+        "id": "barra-z-predicador",
+        "name": "Barra Z predicador",
+        "type": "regular",
+        "muscle_badge": "Bíceps",
+        "technique": "Sentado en el banco predicador, brazos sobre el almohadillado inclinado, agarre supino en barra EZ. Baja controlado hasta casi extender. Sube contrayendo el bíceps al máximo sin soltar los codos del soporte.",
+        "tags": ["Banco predicador", "Barra EZ", "Bíceps braquial"],
+        "gifs": [
+            {"label": "Movimiento",   "accent": False, "path": "biceps/barbell-preacher-curl.gif"},
+            {"label": "Con barra EZ", "accent": True,  "path": "biceps/ez-barbell-preacher-curl.gif"},
+        ],
+    },
+    {
+        "id": "dominadas-supina",
+        "name": "Dominadas supinas",
+        "type": "regular",
+        "muscle_badge": "Dorsal · Bíceps",
+        "technique": "Agarre supino (palmas hacia ti) a la anchura de hombros. Desde posición colgada, tira llevando el pecho hacia la barra. Activa bíceps y dorsal simultáneamente. Baja controlado hasta la extensión completa.",
+        "tags": ["Peso corporal", "Agarre supino", "Dorsal + Bíceps"],
+        "gifs": [
+            {"label": "Movimiento", "accent": False, "path": "lats/chin-up.gif"},
+            {"label": "Variante",   "accent": True,  "path": "lats/underhand-pull-up.gif"},
+        ],
+    },
+    {
+        "id": "polea-baja-cuerda",
+        "name": "Polea baja cuerda",
+        "type": "regular",
+        "muscle_badge": "Bíceps",
+        "technique": "Polea baja con accesorio de cuerda o barra. De pie o sentado, curl hacia los hombros manteniendo los codos fijos al costado. El agarre con cuerda permite una supinación más natural y mayor rango de movimiento.",
+        "tags": ["Cable", "Curl", "Bíceps braquial · Braquiorradial"],
+        "gifs": [
+            {"label": "Movimiento", "accent": False, "path": "biceps/cable-curl.gif"},
+            {"label": "Con cuerda", "accent": True,  "path": "biceps/cable-rope-hammer-curl.gif"},
+        ],
+    },
+    {
+        "id": "press-hombros-barra",
+        "name": "Press hombros barra",
+        "type": "regular",
+        "muscle_badge": "Deltoides",
+        "technique": "De pie o sentado con barra a la altura de los hombros, agarre prono ligeramente más ancho. Empuja la barra verticalmente por encima de la cabeza. Activa el core para estabilizar. Baja controlado hasta la barbilla o un poco más abajo.",
+        "tags": ["Barra libre", "Press vertical", "Deltoides + Trapecios"],
+        "gifs": [
+            {"label": "Movimiento", "accent": False, "path": "delts/barbell-overhead-press.gif"},
+            {"label": "Sentado",    "accent": True,  "path": "delts/barbell-seated-overhead-press.gif"},
+        ],
+    },
+    {
+        "id": "laterales-banco",
+        "name": "Laterales banco inclinado",
+        "type": "regular",
+        "muscle_badge": "Deltoides lateral",
+        "technique": "Apoyado de lado en banco inclinado 30-45°. Eleva la mancuerna hacia el techo describiendo un arco. La posición inclinada aisla mejor el deltoides lateral eliminando el balanceo del torso.",
+        "tags": ["Mancuerna", "Banco inclinado", "Deltoides medial"],
+        "gifs": [
+            {"label": "Movimiento", "accent": False, "path": "delts/dumbbell-incline-lateral-raise.gif"},
+            {"label": "Variante",   "accent": True,  "path": "delts/dumbbell-lateral-raise.gif"},
+        ],
+    },
+    {
+        "id": "frontales-disco",
+        "name": "Frontales con disco",
+        "type": "regular",
+        "muscle_badge": "Deltoides frontal",
+        "technique": "De pie sujetando un disco con ambas manos a la altura de las caderas. Eleva los brazos hasta la horizontal (90°) manteniendo codos ligeramente doblados. El disco obliga a trabajar en pronación, activando el deltoides anterior.",
+        "tags": ["Disco", "Elevación frontal", "Hombro anterior"],
+        "gifs": [
+            {"label": "Movimiento", "accent": False, "path": "delts/plate-front-raise.gif"},
+            {"label": "Con barra",  "accent": True,  "path": "delts/barbell-front-raise.gif"},
+        ],
+    },
+    {
+        "id": "tirones-sumo",
+        "name": "Tirones sumo",
+        "type": "regular",
+        "muscle_badge": "Trapecios · Hombros",
+        "technique": "De pie con barra o mancuernas en agarre cerrado. Tira hacia arriba llevando los codos por encima de los hombros, barra cerca del cuerpo. Los codos guían el movimiento. En el punto alto los codos quedan a la altura de los ojos.",
+        "tags": ["Barra · Mancuernas", "Remo vertical", "Trapecios + Deltoides"],
+        "gifs": [
+            {"label": "Movimiento",      "accent": False, "path": "delts/barbell-upright-row.gif"},
+            {"label": "Con mancuernas",  "accent": True,  "path": "delts/dumbbell-upright-row.gif"},
+        ],
+    },
+    {
+        "id": "apertura-maquina",
+        "name": "Apertura en máquina",
+        "type": "regular",
+        "muscle_badge": "Pectorales",
+        "technique": "Sentado en la máquina pec-deck, codos apoyados en los almohadillados. Junta los brazos frente al pecho apretando los pectorales. Mantén 1 segundo en la contracción. Abre lentamente controlando el estiramiento.",
+        "tags": ["Máquina pec-deck", "Aislamiento", "Pectoral mayor"],
+        "gifs": [
+            {"label": "Movimiento", "accent": False, "path": "pectorals/lever-pec-deck-fly.gif"},
+            {"label": "En cable",   "accent": True,  "path": "pectorals/cable-crossover.gif"},
+        ],
+    },
+    {
+        "id": "posterior-maquina",
+        "name": "Posterior en máquina",
+        "type": "regular",
+        "muscle_badge": "Deltoides posterior",
+        "technique": "Sentado en la máquina pec-deck de cara al respaldo, abre los brazos hacia atrás en arco amplio. Aprieta los deltoides posteriores y romboides al final del movimiento. Vuelve lento controlando la vuelta.",
+        "tags": ["Máquina reverse pec-deck", "Aislamiento", "Deltoides posterior + Romboides"],
+        "gifs": [
+            {"label": "Movimiento", "accent": False, "path": "upper-back/lever-pec-deck-rear-delt-row.gif"},
+            {"label": "En cable",   "accent": True,  "path": "delts/cable-rear-delt-row.gif"},
+        ],
+    },
+]
+
+# ─── Planes ────────────────────────────────────────────────────────────────────
+PLANS = [
+    {"_id": "iniciacion",    "name": "Iniciación",   "sort_order": 1},
+    {"_id": "hipertrofia-5", "name": "Hipertrofia 5","sort_order": 2},
+]
+
+# ─── Días de entrenamiento ─────────────────────────────────────────────────────
+WORKOUT_DAYS = [
+    # ── Iniciación ────────────────────────────────────────────────────────────
+    {
+        "plan": "iniciacion", "day_num": 1, "day_label": "DÍA 1",
+        "title": "DÍA UNO",
+        "subtitle": "Piernas · Pecho · Espalda · Brazos · Core",
+        "muscle_tags": ["Cuádriceps", "Espalda baja", "Pecho", "Dorsal", "Hombros", "Bíceps", "Tríceps", "Core"],
+        "has_cardio": True, "total": 10,
+        "exercises": [
+            {"id": "cardio",            "sets": 1, "reps": "12'"},
+            {"id": "ext-cuadriceps",    "sets": 4, "reps": "12"},
+            {"id": "prensa",            "sets": 4, "reps": "12"},
+            {"id": "deadlift",          "sets": 4, "reps": "12"},
+            {"id": "press-pecho",       "sets": 4, "reps": "12"},
+            {"id": "jalon-abierto",     "sets": 4, "reps": "12"},
+            {"id": "laterales-hombros", "sets": 4, "reps": "12"},
+            {"id": "martillo",          "sets": 4, "reps": "12"},
+            {"id": "fondos",            "sets": 4, "reps": "12"},
+            {"id": "abdominales",       "sets": 4, "reps": "15"},
+        ],
+    },
+    {
+        "plan": "iniciacion", "day_num": 2, "day_label": "DÍA 2",
         "title": "DÍA DOS",
         "subtitle": "Piernas · Espalda · Pecho · Brazos · Core",
         "muscle_tags": ["Femoral", "Cuádriceps", "Espalda", "Pecho", "Hombros", "Bíceps", "Tríceps", "Core"],
-        "has_cardio": True,
-        "total": 10,
-        "exercises": ["cardio", "femoral-tumbado", "sentadillas", "deadlift-rdl", "jalon-cerrado",
-                      "superior-pecho", "frontales", "barra-biceps", "extension-v", "abdominales"],
+        "has_cardio": True, "total": 10,
+        "exercises": [
+            {"id": "cardio",          "sets": 1, "reps": "12'"},
+            {"id": "femoral-tumbado", "sets": 4, "reps": "12"},
+            {"id": "sentadillas",     "sets": 4, "reps": "12"},
+            {"id": "deadlift-rdl",    "sets": 4, "reps": "12"},
+            {"id": "jalon-cerrado",   "sets": 4, "reps": "12"},
+            {"id": "superior-pecho",  "sets": 4, "reps": "12"},
+            {"id": "frontales",       "sets": 4, "reps": "12"},
+            {"id": "barra-biceps",    "sets": 4, "reps": "12"},
+            {"id": "extension-v",     "sets": 4, "reps": "12"},
+            {"id": "abdominales",     "sets": 4, "reps": "15"},
+        ],
     },
     {
-        "plan": "iniciacion",
-        "day_num": 3,
+        "plan": "iniciacion", "day_num": 3, "day_label": "DÍA 3",
         "title": "DÍA TRES",
         "subtitle": "Aductores · Abductores · Glúteos · Pecho · Espalda · Brazos · Core",
-        "muscle_tags": ["Aductores", "Abductores", "Glúteos", "Pectorales", "Dorsal", "Hombros", "Bíceps", "Tríceps", "Core"],
-        "has_cardio": False,
-        "total": 9,
-        "exercises": ["maquina-aductor", "maquina-abductor", "hip-thrust", "apertura",
-                      "remo-maquina", "face-pull", "curl-alterno", "extension-v-invertida", "abdominales"],
+        "muscle_tags": ["Aductores", "Abductores", "Glúteos", "Pectorales", "Dorsal", "Hombros", "Bíceps", "Tríceps"],
+        "has_cardio": False, "total": 9,
+        "exercises": [
+            {"id": "maquina-aductor",       "sets": 4, "reps": "15"},
+            {"id": "maquina-abductor",      "sets": 4, "reps": "15"},
+            {"id": "hip-thrust",            "sets": 4, "reps": "12"},
+            {"id": "apertura",              "sets": 4, "reps": "12"},
+            {"id": "remo-maquina",          "sets": 4, "reps": "12"},
+            {"id": "face-pull",             "sets": 4, "reps": "15"},
+            {"id": "curl-alterno",          "sets": 4, "reps": "12"},
+            {"id": "extension-v-invertida", "sets": 4, "reps": "12"},
+            {"id": "abdominales",           "sets": 4, "reps": "15"},
+        ],
+    },
+    # ── Hipertrofia 5 ─────────────────────────────────────────────────────────
+    {
+        "plan": "hipertrofia-5", "day_num": 1, "day_label": "L",
+        "title": "PECHO Y TRÍCEPS",
+        "subtitle": "Pectorales · Tríceps · Hombro anterior",
+        "muscle_tags": ["Pectorales", "Tríceps", "Hombro anterior"],
+        "has_cardio": False, "total": 8,
+        "exercises": [
+            {"id": "press-pecho",           "sets": 4, "reps": "8"},
+            {"id": "barra-pecho-multipower", "sets": 4, "reps": "10"},
+            {"id": "superior-pecho",        "sets": 4, "reps": "10"},
+            {"id": "apertura-maquina",      "sets": 4, "reps": "12"},
+            {"id": "cruces-polea",          "sets": 4, "reps": "15"},
+            {"id": "press-frances",         "sets": 4, "reps": "12"},
+            {"id": "extension-v",           "sets": 4, "reps": "15"},
+            {"id": "fondos",                "sets": 4, "reps": "10"},
+        ],
+    },
+    {
+        "plan": "hipertrofia-5", "day_num": 2, "day_label": "M",
+        "title": "ESPALDA Y BÍCEPS",
+        "subtitle": "Dorsal · Romboides · Bíceps",
+        "muscle_tags": ["Dorsal ancho", "Espalda media", "Bíceps", "Braquial"],
+        "has_cardio": False, "total": 8,
+        "exercises": [
+            {"id": "dominadas",         "sets": 4, "reps": "8"},
+            {"id": "remo-mancuernas",   "sets": 4, "reps": "10"},
+            {"id": "jalon-cerrado",     "sets": 4, "reps": "12"},
+            {"id": "dominadas-supina",  "sets": 3, "reps": "8"},
+            {"id": "polea-baja-cuerda", "sets": 3, "reps": "15"},
+            {"id": "curl-alterno",      "sets": 4, "reps": "12"},
+            {"id": "barra-z-predicador","sets": 4, "reps": "12"},
+            {"id": "martillo",          "sets": 3, "reps": "12"},
+        ],
+    },
+    {
+        "plan": "hipertrofia-5", "day_num": 3, "day_label": "X",
+        "title": "HOMBROS",
+        "subtitle": "Deltoides anterior · lateral · posterior",
+        "muscle_tags": ["Deltoides", "Trapecios", "Serrato", "Manguito rotador"],
+        "has_cardio": False, "total": 9,
+        "exercises": [
+            {"id": "press-hombros-barra", "sets": 4, "reps": "10"},
+            {"id": "press-hombros-db",    "sets": 4, "reps": "12"},
+            {"id": "laterales-hombros",   "sets": 4, "reps": "15"},
+            {"id": "laterales-banco",     "sets": 4, "reps": "15"},
+            {"id": "frontales-disco",     "sets": 4, "reps": "12"},
+            {"id": "tirones-sumo",        "sets": 4, "reps": "12"},
+            {"id": "posterior-maquina",   "sets": 3, "reps": "15"},
+            {"id": "face-pull",           "sets": 3, "reps": "15"},
+            {"id": "serrato",             "sets": 3, "reps": "15"},
+        ],
+    },
+    {
+        "plan": "hipertrofia-5", "day_num": 4, "day_label": "J",
+        "title": "PIERNAS",
+        "subtitle": "Cuádriceps · Glúteos · Gemelos · Lumbares",
+        "muscle_tags": ["Cuádriceps", "Glúteos", "Gemelos", "Espalda baja"],
+        "has_cardio": False, "total": 6,
+        "exercises": [
+            {"id": "sentadillas",    "sets": 5, "reps": "5"},
+            {"id": "prensa",         "sets": 4, "reps": "15"},
+            {"id": "ext-cuadriceps", "sets": 4, "reps": "12"},
+            {"id": "zancadas",       "sets": 3, "reps": "12"},
+            {"id": "lumbares",       "sets": 3, "reps": "15"},
+            {"id": "gemelos",        "sets": 4, "reps": "20"},
+        ],
+    },
+    {
+        "plan": "hipertrofia-5", "day_num": 5, "day_label": "V",
+        "title": "POSTERIOR",
+        "subtitle": "Isquiotibiales · Glúteos · Aductores · Abductores",
+        "muscle_tags": ["Isquiotibiales", "Glúteos", "Aductores", "Abductores"],
+        "has_cardio": False, "total": 6,
+        "exercises": [
+            {"id": "deadlift",         "sets": 4, "reps": "5"},
+            {"id": "deadlift-rdl",     "sets": 4, "reps": "10"},
+            {"id": "femoral-tumbado",  "sets": 4, "reps": "12"},
+            {"id": "maquina-aductor",  "sets": 4, "reps": "15"},
+            {"id": "maquina-abductor", "sets": 4, "reps": "15"},
+            {"id": "hip-thrust",       "sets": 4, "reps": "12"},
+        ],
     },
 ]
 
@@ -386,44 +727,58 @@ async def _download(client: httpx.AsyncClient, path: str) -> bytes:
 
 async def seed_if_empty() -> None:
     db = get_db()
-    if await db.exercises.count_documents({}) > 0:
-        return
 
-    print("Primera ejecución — descargando GIFs y poblando MongoDB...", flush=True)
+    existing_ids: set[str] = set()
+    async for ex in db.exercises.find({}, {"_id": 1}):
+        existing_ids.add(ex["_id"])
 
-    unique_paths = list({g["path"] for ex in EXERCISES for g in ex["gifs"]})
-    gif_cache: dict[str, bytes] = {}
+    new_exercises = [ex for ex in EXERCISES if ex["id"] not in existing_ids]
 
-    async with httpx.AsyncClient() as client:
-        batch_size = 8
-        for i in range(0, len(unique_paths), batch_size):
-            batch = unique_paths[i : i + batch_size]
-            results = await asyncio.gather(*[_download(client, p) for p in batch], return_exceptions=True)
-            for path, result in zip(batch, results):
-                if isinstance(result, Exception):
-                    print(f"  ✗ {path}: {result}", flush=True)
-                else:
-                    gif_cache[path] = result
-                    print(f"  ✓ {path}", flush=True)
+    if new_exercises:
+        print(f"Descargando {len(new_exercises)} nuevos ejercicios...", flush=True)
+        unique_paths = list({g["path"] for ex in new_exercises for g in ex["gifs"]})
+        gif_cache: dict[str, bytes] = {}
 
-    docs = []
-    for ex in EXERCISES:
-        docs.append({
-            "_id": ex["id"],
-            "name": ex["name"],
-            "type": ex.get("type", "regular"),
-            "muscle_badge": ex.get("muscle_badge", ""),
-            "technique": ex.get("technique"),
-            "tags": ex.get("tags", []),
-            "meta": ex.get("meta"),
-            "duration": ex.get("duration"),
-            "gifs": [{"label": g["label"], "accent": g["accent"]} for g in ex["gifs"]],
-            "gif_data": [gif_cache.get(g["path"], b"") for g in ex["gifs"]],
-        })
+        async with httpx.AsyncClient() as client:
+            batch_size = 8
+            for i in range(0, len(unique_paths), batch_size):
+                batch = unique_paths[i: i + batch_size]
+                results = await asyncio.gather(*[_download(client, p) for p in batch], return_exceptions=True)
+                for path, result in zip(batch, results):
+                    if isinstance(result, Exception):
+                        print(f"  ✗ {path}: {result}", flush=True)
+                    else:
+                        gif_cache[path] = result
+                        print(f"  ✓ {path}", flush=True)
 
-    await db.exercises.insert_many(docs)
-    await db.workout_days.insert_many(WORKOUT_DAYS)
-    await db.exercises.create_index("type")
+        docs = []
+        for ex in new_exercises:
+            docs.append({
+                "_id": ex["id"],
+                "name": ex["name"],
+                "type": ex.get("type", "regular"),
+                "muscle_badge": ex.get("muscle_badge", ""),
+                "technique": ex.get("technique"),
+                "tags": ex.get("tags", []),
+                "meta": ex.get("meta"),
+                "duration": ex.get("duration"),
+                "gifs": [{"label": g["label"], "accent": g["accent"]} for g in ex["gifs"]],
+                "gif_data": [gif_cache.get(g["path"], b"") for g in ex["gifs"]],
+            })
+
+        await db.exercises.insert_many(docs)
+        await db.exercises.create_index("type")
+        print(f"  → {len(docs)} ejercicios insertados.", flush=True)
+
+    for plan in PLANS:
+        await db.workout_plans.replace_one({"_id": plan["_id"]}, plan, upsert=True)
+
+    for day in WORKOUT_DAYS:
+        await db.workout_days.replace_one(
+            {"plan": day["plan"], "day_num": day["day_num"]},
+            day,
+            upsert=True,
+        )
+
     await db.workout_days.create_index([("plan", 1), ("day_num", 1)])
-
-    print("Base de datos lista.", flush=True)
+    print("Base de datos al día.", flush=True)
