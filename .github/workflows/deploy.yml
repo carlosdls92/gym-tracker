@@ -15,13 +15,24 @@ jobs:
           rsync -a --delete \
             --exclude='.git' \
             --exclude='.github' \
+            --exclude='__pycache__' \
+            --exclude='*.pyc' \
             . /var/lib/casaos/apps/gym-tracker/
           cd /var/lib/casaos/apps/gym-tracker
           docker compose down --remove-orphans || true
+          docker compose build --no-cache
           docker compose up -d
 
       - name: Health check
         run: |
-          sleep 3
-          curl -sf http://localhost:8095/ > /dev/null
-          echo "gym-tracker OK en :8095"
+          echo "Esperando que la app arranque (primera vez descarga GIFs)..."
+          for i in $(seq 1 40); do
+            if curl -sf http://localhost:8095/ > /dev/null; then
+              echo "gym-tracker OK en :8095 (intento $i)"
+              exit 0
+            fi
+            echo "  intento $i/40 — esperando 5s..."
+            sleep 5
+          done
+          echo "Health check fallido"
+          exit 1

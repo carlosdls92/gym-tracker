@@ -1,9 +1,11 @@
 services:
   gym-tracker:
-    image: nginx:alpine
+    build: .
     container_name: gym-tracker
     ports:
-      - "8095:80"
-    volumes:
-      - ./:/usr/share/nginx/html:ro
+      - "8095:8095"
+    environment:
+      - MONGODB_URL=${MONGODB_URL:-mongodb://host.docker.internal:27017}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     restart: unless-stopped
