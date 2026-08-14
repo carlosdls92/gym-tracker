@@ -345,8 +345,8 @@ EXERCISES = [
         "technique": "Poleas altas a los lados, inclínate ligeramente adelante. Junta las manos frente al pecho describiendo un arco amplio. Mantén los codos levemente doblados durante todo el recorrido. Contrae el pecho al máximo en el punto de cruce.",
         "tags": ["Cable", "Aislamiento", "Pectoral mayor"],
         "gifs": [
-            {"label": "Movimiento", "accent": False, "path": "pectorals/cable-crossover.gif"},
-            {"label": "Variante",   "accent": True,  "path": "pectorals/cable-fly-mid.gif"},
+            {"label": "Movimiento", "accent": False, "path": "pectorals/cable-middle-fly.gif"},
+            {"label": "Variante",   "accent": True,  "path": "pectorals/dumbbell-fly.gif"},
         ],
     },
     {
@@ -357,7 +357,7 @@ EXERCISES = [
         "technique": "Sentado o de pie con mancuernas a la altura de los hombros. Empuja hacia arriba hasta casi extender los brazos. Baja controlado hasta que los codos queden a 90° o ligeramente más abajo.",
         "tags": ["Mancuernas", "Press vertical", "Deltoides frontal + medial"],
         "gifs": [
-            {"label": "Movimiento", "accent": False, "path": "delts/dumbbell-shoulder-press.gif"},
+            {"label": "Movimiento", "accent": False, "path": "delts/dumbbell-lateral-raise.gif"},
             {"label": "Sentado",    "accent": True,  "path": "delts/dumbbell-seated-shoulder-press.gif"},
         ],
     },
@@ -369,8 +369,8 @@ EXERCISES = [
         "technique": "De pie en el borde de un escalón, talones fuera. Sube de puntillas lo máximo posible contrayendo los gemelos. Baja lentamente hasta sentir el estiramiento completo. No rebotas en el punto bajo.",
         "tags": ["Peso corporal · Máquina", "Elevación de talones", "Gastrocnemio · Sóleo"],
         "gifs": [
-            {"label": "Movimiento",  "accent": False, "path": "calves/standing-calf-raise.gif"},
-            {"label": "En máquina",  "accent": True,  "path": "calves/lever-standing-calf-raise.gif"},
+            {"label": "Movimiento",  "accent": False, "path": "calves/lever-standing-calf-raise.gif"},
+            {"label": "En máquina",  "accent": True,  "path": "calves/lever-seated-calf-raise.gif"},
         ],
     },
     {
@@ -393,7 +393,7 @@ EXERCISES = [
         "technique": "Press de banca en máquina Smith. Ajusta el banco plano, agarre ligeramente más ancho que los hombros. La guía controlada permite enfocarse en el pecho. Baja hasta rozar el pecho, empuja hasta casi extender.",
         "tags": ["Multipower", "Compuesto", "Pecho + Tríceps"],
         "gifs": [
-            {"label": "Movimiento", "accent": False, "path": "pectorals/smith-machine-chest-press.gif"},
+            {"label": "Movimiento", "accent": False, "path": "pectorals/barbell-bench-press.gif"},
             {"label": "Inclinado",  "accent": True,  "path": "pectorals/barbell-incline-bench-press.gif"},
         ],
     },
@@ -406,7 +406,7 @@ EXERCISES = [
         "tags": ["Mancuernas", "Unilateral", "Dorsal + Romboides + Bíceps"],
         "gifs": [
             {"label": "Movimiento", "accent": False, "path": "upper-back/dumbbell-bent-over-row.gif"},
-            {"label": "Un brazo",   "accent": True,  "path": "upper-back/dumbbell-one-arm-row.gif"},
+            {"label": "Un brazo",   "accent": True,  "path": "upper-back/lever-narrow-grip-seated-row.gif"},
         ],
     },
     {
@@ -417,7 +417,7 @@ EXERCISES = [
         "technique": "Con mancuerna o cable, extiende el brazo por encima de la cabeza empujando la escápula hacia afuera (protracción escapular). Mantén el codo extendido. Mejora la salud del hombro y la definición lateral del tronco.",
         "tags": ["Cable · Mancuerna", "Aislamiento", "Serrato anterior"],
         "gifs": [
-            {"label": "Movimiento", "accent": False, "path": "pectorals/weighted-serratus-anterior-dips.gif"},
+            {"label": "Movimiento", "accent": False, "path": "pectorals/dumbbell-fly.gif"},
             {"label": "Variante",   "accent": True,  "path": "lats/cable-pulldown.gif"},
         ],
     },
@@ -429,8 +429,8 @@ EXERCISES = [
         "technique": "Tumbado boca abajo en banco de extensiones con caderas sobre el pivote. Baja el torso hasta la horizontal o ligeramente más. Sube contrayendo los erectores espinales hasta alinear el cuerpo. No hiperextiendas al final.",
         "tags": ["Banco hiperextensión", "Erector espinal", "Glúteos · Femoral"],
         "gifs": [
-            {"label": "Movimiento", "accent": False, "path": "lower-back/hyperextension.gif"},
-            {"label": "Con peso",   "accent": True,  "path": "lower-back/weighted-back-extension.gif"},
+            {"label": "Movimiento", "accent": False, "path": "glutes/barbell-romanian-deadlift.gif"},
+            {"label": "Con peso",   "accent": True,  "path": "glutes/barbell-deadlift.gif"},
         ],
     },
     {
@@ -441,8 +441,8 @@ EXERCISES = [
         "technique": "De pie con mancuernas o barra. Da un paso largo hacia adelante, baja la rodilla trasera casi hasta el suelo. La rodilla delantera no debe sobrepasar los dedos del pie. Empuja desde el talón delantero para volver.",
         "tags": ["Mancuernas · Barra", "Compuesto", "Cuádriceps + Glúteo"],
         "gifs": [
-            {"label": "Movimiento",  "accent": False, "path": "quads/barbell-lunge.gif"},
-            {"label": "Caminando",   "accent": True,  "path": "quads/dumbbell-walking-lunge.gif"},
+            {"label": "Movimiento",  "accent": False, "path": "quads/barbell-wide-squat.gif"},
+            {"label": "Caminando",   "accent": True,  "path": "quads/lever-alternate-leg-press.gif"},
         ],
     },
     {
@@ -466,7 +466,7 @@ EXERCISES = [
         "tags": ["Banco predicador", "Barra EZ", "Bíceps braquial"],
         "gifs": [
             {"label": "Movimiento",   "accent": False, "path": "biceps/barbell-preacher-curl.gif"},
-            {"label": "Con barra EZ", "accent": True,  "path": "biceps/ez-barbell-preacher-curl.gif"},
+            {"label": "Con barra EZ", "accent": True,  "path": "biceps/barbell-curl.gif"},
         ],
     },
     {
@@ -478,7 +478,7 @@ EXERCISES = [
         "tags": ["Peso corporal", "Agarre supino", "Dorsal + Bíceps"],
         "gifs": [
             {"label": "Movimiento", "accent": False, "path": "lats/chin-up.gif"},
-            {"label": "Variante",   "accent": True,  "path": "lats/underhand-pull-up.gif"},
+            {"label": "Variante",   "accent": True,  "path": "lats/chin-up.gif"},
         ],
     },
     {
@@ -490,7 +490,7 @@ EXERCISES = [
         "tags": ["Cable", "Curl", "Bíceps braquial · Braquiorradial"],
         "gifs": [
             {"label": "Movimiento", "accent": False, "path": "biceps/cable-curl.gif"},
-            {"label": "Con cuerda", "accent": True,  "path": "biceps/cable-rope-hammer-curl.gif"},
+            {"label": "Con cuerda", "accent": True,  "path": "biceps/dumbbell-hammer-curl.gif"},
         ],
     },
     {
@@ -501,7 +501,7 @@ EXERCISES = [
         "technique": "De pie o sentado con barra a la altura de los hombros, agarre prono ligeramente más ancho. Empuja la barra verticalmente por encima de la cabeza. Activa el core para estabilizar. Baja controlado hasta la barbilla o un poco más abajo.",
         "tags": ["Barra libre", "Press vertical", "Deltoides + Trapecios"],
         "gifs": [
-            {"label": "Movimiento", "accent": False, "path": "delts/barbell-overhead-press.gif"},
+            {"label": "Movimiento", "accent": False, "path": "delts/barbell-front-raise.gif"},
             {"label": "Sentado",    "accent": True,  "path": "delts/barbell-seated-overhead-press.gif"},
         ],
     },
@@ -513,8 +513,8 @@ EXERCISES = [
         "technique": "Apoyado de lado en banco inclinado 30-45°. Eleva la mancuerna hacia el techo describiendo un arco. La posición inclinada aisla mejor el deltoides lateral eliminando el balanceo del torso.",
         "tags": ["Mancuerna", "Banco inclinado", "Deltoides medial"],
         "gifs": [
-            {"label": "Movimiento", "accent": False, "path": "delts/dumbbell-incline-lateral-raise.gif"},
-            {"label": "Variante",   "accent": True,  "path": "delts/dumbbell-lateral-raise.gif"},
+            {"label": "Movimiento", "accent": False, "path": "delts/dumbbell-lateral-raise.gif"},
+            {"label": "Variante",   "accent": True,  "path": "delts/cable-lateral-raise.gif"},
         ],
     },
     {
@@ -525,7 +525,7 @@ EXERCISES = [
         "technique": "De pie sujetando un disco con ambas manos a la altura de las caderas. Eleva los brazos hasta la horizontal (90°) manteniendo codos ligeramente doblados. El disco obliga a trabajar en pronación, activando el deltoides anterior.",
         "tags": ["Disco", "Elevación frontal", "Hombro anterior"],
         "gifs": [
-            {"label": "Movimiento", "accent": False, "path": "delts/plate-front-raise.gif"},
+            {"label": "Movimiento", "accent": False, "path": "delts/dumbbell-front-raise.gif"},
             {"label": "Con barra",  "accent": True,  "path": "delts/barbell-front-raise.gif"},
         ],
     },
@@ -549,8 +549,8 @@ EXERCISES = [
         "technique": "Sentado en la máquina pec-deck, codos apoyados en los almohadillados. Junta los brazos frente al pecho apretando los pectorales. Mantén 1 segundo en la contracción. Abre lentamente controlando el estiramiento.",
         "tags": ["Máquina pec-deck", "Aislamiento", "Pectoral mayor"],
         "gifs": [
-            {"label": "Movimiento", "accent": False, "path": "pectorals/lever-pec-deck-fly.gif"},
-            {"label": "En cable",   "accent": True,  "path": "pectorals/cable-crossover.gif"},
+            {"label": "Movimiento", "accent": False, "path": "pectorals/dumbbell-fly.gif"},
+            {"label": "En cable",   "accent": True,  "path": "pectorals/cable-middle-fly.gif"},
         ],
     },
     {
@@ -561,8 +561,8 @@ EXERCISES = [
         "technique": "Sentado en la máquina pec-deck de cara al respaldo, abre los brazos hacia atrás en arco amplio. Aprieta los deltoides posteriores y romboides al final del movimiento. Vuelve lento controlando la vuelta.",
         "tags": ["Máquina reverse pec-deck", "Aislamiento", "Deltoides posterior + Romboides"],
         "gifs": [
-            {"label": "Movimiento", "accent": False, "path": "upper-back/lever-pec-deck-rear-delt-row.gif"},
-            {"label": "En cable",   "accent": True,  "path": "delts/cable-rear-delt-row.gif"},
+            {"label": "Movimiento", "accent": False, "path": "upper-back/cable-high-row-kneeling.gif"},
+            {"label": "En cable",   "accent": True,  "path": "upper-back/cable-rope-elevated-seated-row.gif"},
         ],
     },
 ]
