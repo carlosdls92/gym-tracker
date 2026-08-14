@@ -194,7 +194,8 @@ function renderTabs(planSlug, days) {
     `<button class="tab tab-back" onclick="showPlanSelector()">←</button>` +
     days.map(d =>
       `<button class="tab${d.day_num === currentDay ? ' on' : ''}" data-day="${d.day_num}" onclick="loadDay('${planSlug}',${d.day_num})">${d.day_label}</button>`
-    ).join('');
+    ).join('') +
+    `<a class="tab-dl" href="/api/plan/${planSlug}/offline" download="gym-${planSlug}.html" title="Descargar offline">↓</a>`;
 }
 
 // ── Load day ──────────────────────────────────────────────────────────────────
@@ -251,7 +252,10 @@ async function showPlanSelector() {
     <div class="plan-card-name">${plan.name}</div>
     <div class="plan-card-meta">${plan.days.length} días · ${labels}</div>
   </div>
-  <div class="plan-card-arrow">→</div>
+  <div class="plan-card-actions">
+    <a class="plan-dl-btn" href="/api/plan/${plan._id}/offline" download="gym-${plan._id}.html" onclick="event.stopPropagation()" title="Descargar para uso offline">↓</a>
+    <div class="plan-card-arrow">→</div>
+  </div>
 </div>`;
     }
 

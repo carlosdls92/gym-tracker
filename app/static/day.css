@@ -47,6 +47,13 @@ body {
   flex: 0 0 44px; letter-spacing: 0; font-size: 18px;
   border-right: 1px solid var(--border); border-bottom: 3px solid transparent;
 }
+.tab-dl {
+  flex: 0 0 40px; display: flex; align-items: center; justify-content: center;
+  color: var(--muted); font-size: 17px; text-decoration: none;
+  border-left: 1px solid var(--border); border-bottom: 3px solid transparent;
+  transition: color .2s; -webkit-tap-highlight-color: transparent;
+}
+.tab-dl:hover { color: var(--accent); }
 .tabs-title {
   flex: 1; display: flex; align-items: center; justify-content: center;
   font-family: 'Bebas Neue', sans-serif; font-size: 18px;
@@ -75,7 +82,16 @@ body {
   color: var(--text); letter-spacing: 1px;
 }
 .plan-card-meta { font-size: 12px; color: var(--muted); margin-top: 3px; letter-spacing: .5px; }
+.plan-card-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 .plan-card-arrow { font-size: 22px; color: var(--accent); font-family: 'Bebas Neue', sans-serif; }
+.plan-dl-btn {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--border); background: var(--surface2);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); font-size: 16px; text-decoration: none;
+  transition: all .2s; flex-shrink: 0; -webkit-tap-highlight-color: transparent;
+}
+.plan-dl-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(255,69,0,.1); }
 
 /* ── ROOT / LOADING ───────────────────────────────────────────────────────── */
 #root { padding-top: 50px; }
