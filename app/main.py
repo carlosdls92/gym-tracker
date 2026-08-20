@@ -49,14 +49,15 @@ def _offline_card(ex: dict, ref: dict, day_num: int, gifs: dict, lazy: bool = Fa
             '<div class="cardio-info">'
             '<div class="cardio-text"><div class="cardio-name">Cardio</div>'
             f'<div class="cardio-meta">{_e(ex.get("meta") or "")}</div>'
-            '<span class="expand-hint">↓ técnica</span></div>'
+            '</div>'
             f'<div class="cardio-time">{_e(ex.get("duration") or "")}</div>'
             f'<div class="check-btn" id="chk-{cid}">✓</div>'
             '</div>'
-            f'<div class="card-detail" id="det-{cid}">'
+            f'<details class="card-detail" id="det-{cid}">'
+            '<summary class="expand-hint">↓ técnica</summary>'
             '<div class="detail-body">'
             f'<div class="detail-text">{_e(technique)}</div>'
-            '</div></div>'
+            '</div></details>'
         )
     else:
         sets = ref.get("sets", 4)
@@ -65,17 +66,17 @@ def _offline_card(ex: dict, ref: dict, day_num: int, gifs: dict, lazy: bool = Fa
         body = (
             '<div class="card-info">'
             f'<div class="card-text"><div class="card-name">{name}</div>'
-            f'<div class="card-sub"><span class="muscle-badge">{_e(ex.get("muscle_badge", ""))}</span>'
-            '<span class="expand-hint">↓ técnica</span></div></div>'
+            f'<div class="card-sub"><span class="muscle-badge">{_e(ex.get("muscle_badge", ""))}</span></div></div>'
             f'<div class="card-right"><div class="sets-row">{_dots(sets)}</div>'
             f'<div class="reps-label">{sets}×{reps}</div>'
             f'<div class="check-btn" id="chk-{cid}">✓</div></div>'
             '</div>'
-            f'<div class="card-detail" id="det-{cid}">'
+            f'<details class="card-detail" id="det-{cid}">'
+            '<summary class="expand-hint">↓ técnica</summary>'
             '<div class="detail-body">'
             f'<div class="detail-text">{_e(ex.get("technique") or "")}</div>'
             f'<div class="detail-tags">{tags}</div>'
-            '</div></div>'
+            '</div></details>'
         )
 
     return (
@@ -199,6 +200,16 @@ async def get_plan_offline(slug: str):
     )
     css = css.replace("'Bebas Neue', sans-serif", "Impact, 'Arial Narrow', sans-serif")
     css = css.replace("'DM Sans', sans-serif", "-apple-system, 'Helvetica Neue', Arial, sans-serif")
+
+    # <details> expand for technique — no JS needed
+    css += (
+        "\ndetails.card-detail{border-top:1px solid rgba(255,255,255,.08);margin-top:0}"
+        "\ndetails.card-detail summary{list-style:none;outline:none;padding:10px 16px;"
+        "color:#888;font-size:12px;cursor:pointer;-webkit-tap-highlight-color:transparent}"
+        "\ndetails.card-detail summary::-webkit-details-marker{display:none}"
+        "\ndetails.card-detail[open] summary{color:#bbb}"
+        "\ndetails.card-detail[open] .detail-body{display:block}"
+    )
 
     # CSS-only day switching via :target (fallback when JS is blocked in Safari file mode)
     if days:
