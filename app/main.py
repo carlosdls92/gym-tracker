@@ -200,15 +200,23 @@ async def get_plan_offline(slug: str):
     css = css.replace("'Bebas Neue', sans-serif", "Impact, 'Arial Narrow', sans-serif")
     css = css.replace("'DM Sans', sans-serif", "-apple-system, 'Helvetica Neue', Arial, sans-serif")
 
+    # CSS-only day switching via :target (fallback when JS is blocked in Safari file mode)
+    if days:
+        first_n = days[0]["day_num"]
+        other_targets = ",".join(f"#day-{d['day_num']}:target" for d in days[1:])
+        css += "\n[id^='day-']:target{display:block}"
+        if other_targets:
+            css += f"\n#root:has({other_targets}) #day-{first_n}{{display:none}}"
+
     plan_name = plan_doc["name"]
     day_totals: dict[int, int] = {}
 
-    # Pre-render tabs
+    # Pre-render tabs — use <a href="#day-N"> so :target works without JS
     tabs_html = ""
     for day in days:
         n = day["day_num"]
         label = _e(day.get("day_label", f"DÍA {n}"))
-        tabs_html += f'<button class="tab" data-day="{n}" onclick="loadDay({n})">{label}</button>'
+        tabs_html += f'<a class="tab" href="#day-{n}" data-day="{n}" onclick="loadDay({n});return false;">{label}</a>'
 
     # Pre-render day panels with cards and embedded base64 GIFs
     panels_html = ""

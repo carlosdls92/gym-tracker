@@ -56,6 +56,8 @@ function loadDay(n) {
   const firstDay = +Object.keys(DAY_TOTALS)[0];
   // El primer día ya es visible en el HTML; registrarlo para que loadDay sepa qué ocultar al cambiar
   currentDay = firstDay;
+  // Limpiar el hash de la URL para que :target CSS no interfiera con la gestión JS
+  try { if (location.hash) history.replaceState(null, '', location.pathname + location.search); } catch {}
 
   // Restaurar estado de progreso en todos los días
   Object.keys(DAY_TOTALS).forEach(function (d) {
