@@ -34,9 +34,9 @@ def _offline_card(ex: dict, ref: dict, day_num: int, gifs: dict) -> str:
 
     imgs = (
         '<div class="card-imgs">'
-        f'<div class="card-img"><img data-src="{s0}" alt="{name}">'
+        f'<div class="card-img"><img src="{s0}" alt="{name}">'
         f'<span class="img-tag">{_e(g0.get("label", ""))}</span></div>'
-        f'<div class="card-img"><img data-src="{s1}" alt="{name}">'
+        f'<div class="card-img"><img src="{s1}" alt="{name}">'
         f'<span class="img-tag{" accent" if g1.get("accent") else ""}">'
         f'{_e(g1.get("label", ""))}</span></div>'
         '</div>'

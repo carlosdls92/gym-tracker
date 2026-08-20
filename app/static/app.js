@@ -233,6 +233,7 @@ async function showPlanSelector() {
   currentPlan = null;
   currentDay  = 0;
   openDetail  = null;
+  try { localStorage.removeItem('gym-last-plan'); localStorage.removeItem('gym-last-day'); } catch {}
 
   document.getElementById('tabs-bar').innerHTML = '<div class="tabs-title">GYM CAR</div>';
   document.getElementById('root').innerHTML =
@@ -255,7 +256,6 @@ async function showPlanSelector() {
     <div class="plan-card-meta">${plan.days.length} días · ${labels}</div>
   </div>
   <div class="plan-card-actions">
-    <a class="plan-dl-btn" href="/api/plan/${plan._id}/offline" download="gym-${plan._id}.html" onclick="event.stopPropagation()" title="Descargar para uso offline">↓</a>
     <div class="plan-card-arrow">→</div>
   </div>
 </div>`;

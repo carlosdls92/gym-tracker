@@ -43,11 +43,6 @@ function loadDay(n) {
   currentDay = n;
   const dayEl = document.getElementById('day-' + n);
   dayEl.hidden = false;
-  dayEl.querySelectorAll('img[data-src]').forEach(function(img) {
-    if (img.dataset.srcLoaded) return;
-    img.src = img.dataset.src;
-    img.dataset.srcLoaded = '1';
-  });
   document.querySelectorAll('.tab[data-day]').forEach(t => t.classList.toggle('on', +t.dataset.day === n));
   try { localStorage.setItem('gym-last-plan', PLAN_SLUG); localStorage.setItem('gym-last-day', String(n)); } catch {}
 }
