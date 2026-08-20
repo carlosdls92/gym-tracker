@@ -43,10 +43,20 @@ function loadDay(n) {
   currentDay = n;
   const dayEl = document.getElementById('day-' + n);
   dayEl.hidden = false;
+  // Lazy-load images for days that used data-src to save memory on open
+  dayEl.querySelectorAll('img[data-src]').forEach(function(img) {
+    if (img.dataset.srcLoaded) return;
+    img.src = img.dataset.src;
+    img.dataset.srcLoaded = '1';
+  });
   document.querySelectorAll('.tab[data-day]').forEach(t => t.classList.toggle('on', +t.dataset.day === n));
   try { localStorage.setItem('gym-last-plan', PLAN_SLUG); localStorage.setItem('gym-last-day', String(n)); } catch {}
 }
 (function () {
+  const firstDay = +Object.keys(DAY_TOTALS)[0];
+  // El primer día ya es visible en el HTML; registrarlo para que loadDay sepa qué ocultar al cambiar
+  currentDay = firstDay;
+
   // Restaurar estado de progreso en todos los días
   Object.keys(DAY_TOTALS).forEach(function (d) {
     const day = +d, done = gp(day);
@@ -59,12 +69,21 @@ function loadDay(n) {
     });
     up(day);
   });
-  // Cargar último día o el primero
-  let start = +Object.keys(DAY_TOTALS)[0];
+
+  // Determinar qué día mostrar (último visitado o el primero)
+  let start = firstDay;
   try {
     const lp = localStorage.getItem('gym-last-plan');
     const ld = +localStorage.getItem('gym-last-day');
     if (lp === PLAN_SLUG && ld && DAY_TOTALS[ld] !== undefined) start = ld;
   } catch {}
-  loadDay(start);
+
+  if (start !== firstDay) {
+    loadDay(start);
+  } else {
+    // El primer día ya está visible; solo actualizar el tab activo
+    document.querySelectorAll('.tab[data-day]').forEach(function(t) {
+      t.classList.toggle('on', +t.dataset.day === firstDay);
+    });
+  }
 })();

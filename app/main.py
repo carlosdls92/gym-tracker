@@ -22,7 +22,7 @@ def _dots(n: int) -> str:
     return '<div class="set-dot"></div>' * (n or 4)
 
 
-def _offline_card(ex: dict, ref: dict, day_num: int, gifs: dict) -> str:
+def _offline_card(ex: dict, ref: dict, day_num: int, gifs: dict, lazy: bool = False) -> str:
     ex_id = ex["_id"]
     cid = f"{day_num}-{ex_id}"
     gx = ex.get("gifs", [])
@@ -31,12 +31,13 @@ def _offline_card(ex: dict, ref: dict, day_num: int, gifs: dict) -> str:
     name = _e(ex.get("name", ""))
     s0 = gifs.get(f"{ex_id}/0", "")
     s1 = gifs.get(f"{ex_id}/1", "")
+    img_attr = "data-src" if lazy else "src"
 
     imgs = (
         '<div class="card-imgs">'
-        f'<div class="card-img"><img src="{s0}" alt="{name}">'
+        f'<div class="card-img"><img {img_attr}="{s0}" alt="{name}">'
         f'<span class="img-tag">{_e(g0.get("label", ""))}</span></div>'
-        f'<div class="card-img"><img src="{s1}" alt="{name}">'
+        f'<div class="card-img"><img {img_attr}="{s1}" alt="{name}">'
         f'<span class="img-tag{" accent" if g1.get("accent") else ""}">'
         f'{_e(g1.get("label", ""))}</span></div>'
         '</div>'
@@ -211,8 +212,10 @@ async def get_plan_offline(slug: str):
 
     # Pre-render day panels with cards and embedded base64 GIFs
     panels_html = ""
+    first_day_num = days[0]["day_num"] if days else None
     for day in days:
         n = day["day_num"]
+        is_first = (n == first_day_num)
         refs = day["exercises"]
         if refs and isinstance(refs[0], str):
             refs = [{"id": r, "sets": 4, "reps": "12"} for r in refs]
@@ -239,18 +242,21 @@ async def get_plan_offline(slug: str):
             ex = exercises_map.get(ex_id)
             if not ex:
                 continue
+            lazy = not is_first
+            ref_dict = ref if isinstance(ref, dict) else {"id": ex_id}
             if ex.get("type") == "cardio":
-                cards_html += _offline_card(ex, ref if isinstance(ref, dict) else {"id": ex_id}, n, gifs_b64)
+                cards_html += _offline_card(ex, ref_dict, n, gifs_b64, lazy=lazy)
                 cards_html += '<div class="section-title">Ejercicios</div>'
                 section_shown = True
             else:
                 if not section_shown:
                     cards_html += '<div class="section-title">Ejercicios</div>'
                     section_shown = True
-                cards_html += _offline_card(ex, ref if isinstance(ref, dict) else {"id": ex_id}, n, gifs_b64)
+                cards_html += _offline_card(ex, ref_dict, n, gifs_b64, lazy=lazy)
 
+        hidden_attr = "" if is_first else " hidden"
         panels_html += (
-            f'<div id="day-{n}" hidden>'
+            f'<div id="day-{n}"{hidden_attr}>'
             f'<header data-day="{n}">'
             '<div class="label-day">Gym CAR — Nacho</div>'
             f'<h1>{title_html}</h1>'
