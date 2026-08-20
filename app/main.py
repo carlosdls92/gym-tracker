@@ -22,19 +22,21 @@ def _dots(n: int) -> str:
     return '<div class="set-dot"></div>' * (n or 4)
 
 
-def _offline_card(ex: dict, ref: dict, day_num: int) -> str:
+def _offline_card(ex: dict, ref: dict, day_num: int, gifs: dict) -> str:
     ex_id = ex["_id"]
     cid = f"{day_num}-{ex_id}"
     gx = ex.get("gifs", [])
     g0 = gx[0] if len(gx) > 0 else {}
     g1 = gx[1] if len(gx) > 1 else {}
     name = _e(ex.get("name", ""))
+    s0 = gifs.get(f"{ex_id}/0", "")
+    s1 = gifs.get(f"{ex_id}/1", "")
 
     imgs = (
         '<div class="card-imgs">'
-        f'<div class="card-img"><img data-gif-key="{ex_id}/0" alt="{name}">'
+        f'<div class="card-img"><img data-src="{s0}" alt="{name}">'
         f'<span class="img-tag">{_e(g0.get("label", ""))}</span></div>'
-        f'<div class="card-img"><img data-gif-key="{ex_id}/1" alt="{name}">'
+        f'<div class="card-img"><img data-src="{s1}" alt="{name}">'
         f'<span class="img-tag{" accent" if g1.get("accent") else ""}">'
         f'{_e(g1.get("label", ""))}</span></div>'
         '</div>'
@@ -238,14 +240,14 @@ async def get_plan_offline(slug: str):
             if not ex:
                 continue
             if ex.get("type") == "cardio":
-                cards_html += _offline_card(ex, ref if isinstance(ref, dict) else {"id": ex_id}, n)
+                cards_html += _offline_card(ex, ref if isinstance(ref, dict) else {"id": ex_id}, n, gifs_b64)
                 cards_html += '<div class="section-title">Ejercicios</div>'
                 section_shown = True
             else:
                 if not section_shown:
                     cards_html += '<div class="section-title">Ejercicios</div>'
                     section_shown = True
-                cards_html += _offline_card(ex, ref if isinstance(ref, dict) else {"id": ex_id}, n)
+                cards_html += _offline_card(ex, ref if isinstance(ref, dict) else {"id": ex_id}, n, gifs_b64)
 
         panels_html += (
             f'<div id="day-{n}" hidden>'
@@ -288,7 +290,6 @@ async def get_plan_offline(slug: str):
         panels_html,
         '</div>',
         '<script>',
-        f'const GIFS={json.dumps(gifs_b64, separators=(",", ":"), ensure_ascii=True)};',
         f'const PLAN_SLUG={json.dumps(slug, ensure_ascii=False)};',
         f'const DAY_TOTALS={totals_json};',
         _OFFLINE_JS,
