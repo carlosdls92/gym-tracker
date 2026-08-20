@@ -43,6 +43,9 @@ def _offline_card(ex: dict, ref: dict, day_num: int, gifs: dict, lazy: bool = Fa
         '</div>'
     )
 
+    checkbox = f'<input type="checkbox" class="ex-cb" id="cb-{cid}">'
+    check_label = f'<label for="cb-{cid}" class="check-btn" id="chk-{cid}">✓</label>'
+
     if ex.get("type") == "cardio":
         technique = ex.get("technique") or ""
         body = (
@@ -51,7 +54,7 @@ def _offline_card(ex: dict, ref: dict, day_num: int, gifs: dict, lazy: bool = Fa
             f'<div class="cardio-meta">{_e(ex.get("meta") or "")}</div>'
             '</div>'
             f'<div class="cardio-time">{_e(ex.get("duration") or "")}</div>'
-            f'<div class="check-btn" id="chk-{cid}">✓</div>'
+            f'{check_label}'
             '</div>'
             f'<details class="card-detail" id="det-{cid}">'
             '<summary class="expand-hint">↓ técnica</summary>'
@@ -69,7 +72,7 @@ def _offline_card(ex: dict, ref: dict, day_num: int, gifs: dict, lazy: bool = Fa
             f'<div class="card-sub"><span class="muscle-badge">{_e(ex.get("muscle_badge", ""))}</span></div></div>'
             f'<div class="card-right"><div class="sets-row">{_dots(sets)}</div>'
             f'<div class="reps-label">{sets}×{reps}</div>'
-            f'<div class="check-btn" id="chk-{cid}">✓</div></div>'
+            f'{check_label}</div>'
             '</div>'
             f'<details class="card-detail" id="det-{cid}">'
             '<summary class="expand-hint">↓ técnica</summary>'
@@ -81,7 +84,7 @@ def _offline_card(ex: dict, ref: dict, day_num: int, gifs: dict, lazy: bool = Fa
 
     return (
         f'<div class="card" id="card-{cid}" onclick="toggleItem(event,\'{cid}\',{day_num})">'
-        f'{imgs}{body}</div>'
+        f'{checkbox}{imgs}{body}</div>'
     )
 
 
@@ -209,6 +212,12 @@ async def get_plan_offline(slug: str):
         "color:#888;font-size:12px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:block}"
         "\ndetails.card-detail summary::-webkit-details-marker{display:none}"
         "\ndetails.card-detail[open] summary{color:#bbb}"
+        # Checkbox-based check button — no JS needed
+        "\n.ex-cb{position:absolute;opacity:0;width:0;height:0;pointer-events:none}"
+        "\n.ex-cb:checked~.card-info .check-btn,"
+        "\n.ex-cb:checked~.cardio-info .check-btn"
+        "{background:var(--done-text);border-color:var(--done-text);color:white}"
+        "\n.ex-cb:checked~.card-imgs{opacity:.5}"
     )
 
     # CSS-only day switching via :target (fallback when JS is blocked in Safari file mode)
