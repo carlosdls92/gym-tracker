@@ -201,14 +201,14 @@ async def get_plan_offline(slug: str):
     css = css.replace("'Bebas Neue', sans-serif", "Impact, 'Arial Narrow', sans-serif")
     css = css.replace("'DM Sans', sans-serif", "-apple-system, 'Helvetica Neue', Arial, sans-serif")
 
-    # <details> expand for technique — no JS needed
+    # <details> expand for technique — override .card-detail max-height:0 / overflow:hidden
     css += (
-        "\ndetails.card-detail{border-top:1px solid rgba(255,255,255,.08);margin-top:0}"
+        "\ndetails.card-detail{max-height:none;overflow:visible;"
+        "border-top:1px solid rgba(255,255,255,.08)}"
         "\ndetails.card-detail summary{list-style:none;outline:none;padding:10px 16px;"
-        "color:#888;font-size:12px;cursor:pointer;-webkit-tap-highlight-color:transparent}"
+        "color:#888;font-size:12px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:block}"
         "\ndetails.card-detail summary::-webkit-details-marker{display:none}"
         "\ndetails.card-detail[open] summary{color:#bbb}"
-        "\ndetails.card-detail[open] .detail-body{display:block}"
     )
 
     # CSS-only day switching via :target (fallback when JS is blocked in Safari file mode)
