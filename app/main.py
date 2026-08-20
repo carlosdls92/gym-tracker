@@ -250,17 +250,16 @@ async def get_plan_offline(slug: str):
             ex = exercises_map.get(ex_id)
             if not ex:
                 continue
-            lazy = not is_first
             ref_dict = ref if isinstance(ref, dict) else {"id": ex_id}
             if ex.get("type") == "cardio":
-                cards_html += _offline_card(ex, ref_dict, n, gifs_b64, lazy=lazy)
+                cards_html += _offline_card(ex, ref_dict, n, gifs_b64)
                 cards_html += '<div class="section-title">Ejercicios</div>'
                 section_shown = True
             else:
                 if not section_shown:
                     cards_html += '<div class="section-title">Ejercicios</div>'
                     section_shown = True
-                cards_html += _offline_card(ex, ref_dict, n, gifs_b64, lazy=lazy)
+                cards_html += _offline_card(ex, ref_dict, n, gifs_b64)
 
         hidden_attr = "" if is_first else " hidden"
         panels_html += (
