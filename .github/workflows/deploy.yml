@@ -1,6 +1,8 @@
 name: Despliegue Automatico OMVDLS
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 jobs:
