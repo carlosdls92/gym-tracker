@@ -311,12 +311,34 @@ async def get_plan_offline(slug: str):
 
     totals_json = json.dumps(day_totals, separators=(",", ":"))
 
+    # CSS progress tracking via :has() — counts checked checkboxes without JS
+    _checked = ".card:has(.ex-cb:checked)"
+    _pcss: list[str] = []
+    for _n, _total in day_totals.items():
+        if not _total:
+            continue
+        _pcss.append(f"#cnt-{_n}{{font-size:0}}")
+        _pcss.append(
+            f"#cnt-{_n}::before{{content:'0 / {_total}';font-size:13px;"
+            f"font-weight:700;color:var(--accent)}}"
+        )
+        for _k in range(1, _total + 1):
+            _chain = (" ~ " + _checked).join([_checked] * _k)
+            _pct = round(_k / _total * 100, 2)
+            _sel = f"#day-{_n}:has({_chain})"
+            _pcss.append(f"{_sel} .progress-bar-fill{{width:{_pct}%!important}}")
+            _pcss.append(f"{_sel} #cnt-{_n}::before{{content:'{_k} / {_total}'}}")
+            if _k == _total:
+                _pcss.append(f"{_sel} #ban-{_n}{{display:block}}")
+    progress_css = "\n".join(_pcss)
+
     parts = [
         '<!DOCTYPE html><html lang="es"><head>',
         '<meta charset="UTF-8">',
         '<meta name="viewport" content="width=device-width,initial-scale=1.0">',
         f'<title>GYM CAR — {_e(plan_name)}</title>',
         '<style>', css, '</style>',
+        '<style>', progress_css, '</style>',
         '</head><body>',
         f'<div class="tabs" id="tabs-bar">{tabs_html}</div>',
         '<div id="root">',
