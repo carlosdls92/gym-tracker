@@ -81,10 +81,12 @@ function buildCardioCard(ex, isDone) {
     <div class="cardio-text">
       <div class="cardio-name">Cardio</div>
       <div class="cardio-meta">${ex.meta || ''}</div>
+      <span class="expand-hint">↓ técnica</span>
     </div>
     <div class="cardio-time">${ex.duration || ''}</div>
     <div class="check-btn" id="chk-${ex._id}"${chkStyle(isDone)}>✓</div>
   </div>
+  <div class="card-detail" id="det-${ex._id}"><div class="detail-body"><div class="detail-text">${ex.technique || ''}</div></div></div>
 </div>`;
 }
 

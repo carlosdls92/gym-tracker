@@ -1,4 +1,4 @@
-// PLAN_SLUG y DAY_TOTALS se inyectan desde Python antes de este bloque
+// PLAN_SLUG, DAY_TOTALS y GIFS se inyectan desde Python antes de este bloque
 let currentDay = 0, openDetail = null;
 
 function gp(d) {
@@ -41,7 +41,13 @@ function loadDay(n) {
   if (openDetail) { openDetail.classList.remove('open'); openDetail = null; }
   if (currentDay) { const c = document.getElementById('day-' + currentDay); if (c) c.hidden = true; }
   currentDay = n;
-  document.getElementById('day-' + n).hidden = false;
+  const dayEl = document.getElementById('day-' + n);
+  dayEl.hidden = false;
+  dayEl.querySelectorAll('img[data-gif-key]').forEach(function(img) {
+    if (img.dataset.gifLoaded) return;
+    const src = GIFS[img.dataset.gifKey];
+    if (src) { img.src = src; img.dataset.gifLoaded = '1'; }
+  });
   document.querySelectorAll('.tab[data-day]').forEach(t => t.classList.toggle('on', +t.dataset.day === n));
   try { localStorage.setItem('gym-last-plan', PLAN_SLUG); localStorage.setItem('gym-last-day', String(n)); } catch {}
 }

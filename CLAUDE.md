@@ -85,13 +85,16 @@ El campo `exercises` es siempre un array de objetos `{id, sets, reps}` (nunca st
 `seed_if_empty()` se llama en el lifespan de FastAPI (bloquea el arranque hasta completar):
 
 1. Busca los IDs de ejercicios ya en la colección.
-2. Solo descarga GIFs para ejercicios **nuevos** (los que no están en la colección).
+2. Solo descarga GIFs para ejercicios **nuevos** (los que no están en la colección) — usando `insert_many`.
 3. Hace `replace_one(..., upsert=True)` en `workout_plans` y `workout_days` — siempre actualiza.
 4. Los GIFs se descargan del CDN `https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/`.
+5. Catálogo actual: **45 ejercicios** en `seed.py` (incluyendo 1 cardio).
 
 Para añadir un plan nuevo o modificar días existentes: editar `seed.py` y reiniciar el contenedor. Los días se reescriben automáticamente vía upsert.
 
 Para añadir ejercicios nuevos: añadir a la lista `EXERCISES` en `seed.py`. Si el ejercicio ya está en MongoDB (mismo `_id`), no se re-descarga.
+
+Para actualizar metadatos de ejercicios existentes (technique, tags, meta, duration, etc.): editar el campo en `EXERCISES` y reiniciar el contenedor — `seed_if_empty` hace `update_one` sobre todos los ejercicios en cada arranque (sin re-descargar GIFs).
 
 Si hay que re-descargar un ejercicio existente (path de GIF erróneo): borrar ese documento de MongoDB y reiniciar el contenedor.
 
@@ -123,12 +126,17 @@ El progreso se guarda en `localStorage` con clave `gym-p-{plan}-{day}` como arra
 El endpoint `GET /api/plan/{slug}/offline` genera un único fichero HTML (~20 MB) que contiene:
 
 - CSS de `day.css` inlineado, con Google Fonts reemplazados por fuentes del sistema.
-- Variables JS: `PLAN_NAME`, `PLAN_SLUG`, `DAYS` (JSON), `GIFS` (base64 data URIs).
-- El fichero `app/offline_app.js` embebido tal cual.
+- Tabs y paneles de días **pre-renderizados en el servidor** (`_offline_card()` en `main.py`). Las imágenes usan `data-gif-key="{ex_id}/{index}"` (sin `src`) — los datos se cargan vía JS al mostrar cada día.
+- Variables JS inyectadas antes de `offline_app.js`:
+  - `GIFS` — objeto JSON `{"{ex_id}/{index}": "data:image/gif;base64,..."}` con todos los GIFs del plan
+  - `PLAN_SLUG` — string con el slug del plan (ej. `"hipertrofia-5"`)
+  - `DAY_TOTALS` — objeto `{day_num: total}` con el total de ejercicios por día
+- `loadDay(n)` en `offline_app.js` asigna `img.src` desde `GIFS` solo al mostrar cada día (lazy por día), evitando que Safari en iOS tenga que decodificar 90 GIFs a la vez.
+- El fichero `app/offline_app.js` embebido íntegro a continuación.
 
 El JS offline usa las mismas claves de `localStorage` que el online, por lo que el progreso es compartido entre ambas versiones.
 
-**No editar** `app/offline_app.js` sin entender que es idéntico funcionalmente a `app/static/app.js` pero sin fetch ni plan selector. Cualquier cambio de lógica que afecte a ambas versiones debe duplicarse.
+**No editar** `app/offline_app.js` sin entender que es funcionalmente equivalente a `app/static/app.js` pero sin fetch ni plan selector, y que opera sobre el HTML pre-renderizado (no construye tarjetas dinámicamente). Cualquier cambio de lógica que afecte a ambas versiones debe duplicarse.
 
 ## Variables de entorno
 
@@ -155,6 +163,7 @@ El runner se llama `omv` y está en el servidor omvdls. El seed puede tardar var
 
 - No añadir endpoints sin actualizar esta documentación y el README.
 - El campo `gif_data` nunca debe incluirse en respuestas JSON de la API — eliminarlo siempre con `ex.pop("gif_data", None)` o no proyectarlo en la query.
-- Los ejercicios de tipo `cardio` no tienen panel de técnica expandible — ver `buildCardioCard` vs `buildExCard`.
+- Los ejercicios de tipo `cardio` también tienen panel de técnica expandible — `buildCardioCard` siempre renderiza el `card-detail`, igual que `buildExCard`.
 - Los GIFs del CDN a veces no existen en `v1.1.0`. Si un path da 404, se almacena `b""` en MongoDB. Corregir el path en `seed.py`, borrar el documento de MongoDB y reiniciar.
 - El campo `sets` en los dots de la UI es dinámico — viene del API, no está hardcodeado.
+- Los IDs de DOM son distintos entre modo online y offline: online usa `progressBar`, `countDisplay`, `completeBanner` (únicos por página); offline usa `pb-{n}`, `cnt-{n}`, `ban-{n}` (uno por día, pre-renderizados). No mezclar.

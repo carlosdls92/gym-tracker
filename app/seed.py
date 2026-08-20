@@ -29,7 +29,7 @@ EXERCISES = [
         "muscle_badge": "Cardio",
         "meta": "Cinta · bicicleta · elíptica · Intensidad media-baja",
         "duration": "12'",
-        "technique": None,
+        "technique": "Empieza a ritmo suave los primeros 2 minutos. Mantén una intensidad media-baja (zona aeróbica, 120-140 ppm) durante el resto. Si puedes mantener una conversación sin jadear, el ritmo es correcto. Respira de forma rítmica por nariz y boca.",
         "tags": [],
         "gifs": [
             {"label": "Cinta de correr", "accent": True,  "path": "cardio/run-equipment.gif"},
@@ -769,6 +769,20 @@ async def seed_if_empty() -> None:
         await db.exercises.insert_many(docs)
         await db.exercises.create_index("type")
         print(f"  → {len(docs)} ejercicios insertados.", flush=True)
+
+    for ex in EXERCISES:
+        await db.exercises.update_one(
+            {"_id": ex["id"]},
+            {"$set": {
+                "name": ex["name"],
+                "type": ex.get("type", "regular"),
+                "muscle_badge": ex.get("muscle_badge", ""),
+                "technique": ex.get("technique"),
+                "tags": ex.get("tags", []),
+                "meta": ex.get("meta"),
+                "duration": ex.get("duration"),
+            }}
+        )
 
     for plan in PLANS:
         await db.workout_plans.replace_one({"_id": plan["_id"]}, plan, upsert=True)
