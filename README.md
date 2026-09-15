@@ -89,7 +89,7 @@ El campo `exercises` en `workout_days` usa el formato:
 # Con Docker Compose
 docker compose up --build
 
-# La app estará en http://localhost:8095
+# La app estará en http://localhost:8087
 ```
 
 El seed se ejecuta automáticamente en el primer arranque. Descarga los GIFs desde el CDN `JahelCuadrado/ExerciseGymGifsDB@v1.1.0` y los almacena en MongoDB. Puede tardar 2-3 minutos la primera vez.
@@ -113,4 +113,4 @@ El despliegue se hace mediante GitHub Actions (`workflow_dispatch`) sobre un run
 .github/workflows/deploy.yml
 ```
 
-El workflow hace `rsync` del código al servidor, reconstruye la imagen Docker con `--no-cache` y verifica que la app responde en `:8095`.
+El workflow hace `rsync` del código al servidor, reconstruye la imagen Docker con `--no-cache` y verifica que la app responde en `:8087`.

@@ -5,11 +5,11 @@
 | Componente | Detalle |
 |---|---|
 | Runtime | Python 3.12 / FastAPI / Uvicorn |
-| Puerto | **:8095** |
+| Puerto | **:8087** |
 | Base de datos | MongoDB `gym_tracker` (Motor async) |
 | Contenedor | Docker — imagen `python:3.12-slim` |
 
-La app corre en `http://192.168.0.23:8095/` en el servidor omvdls.
+La app corre en `http://192.168.0.23:8087/` en el servidor omvdls.
 
 ## Estructura de ficheros
 
@@ -155,7 +155,7 @@ El deploy hace:
 2. `docker compose down --remove-orphans`
 3. `docker compose build --no-cache`
 4. `docker compose up -d`
-5. Health check: `curl http://localhost:8095/` hasta 40 intentos × 5s.
+5. Health check: `curl http://localhost:8087/` hasta 40 intentos × 5s.
 
 El runner se llama `omv` y está en el servidor omvdls. El seed puede tardar varios minutos la primera vez (descarga de GIFs), el health check lo tiene en cuenta.
 
