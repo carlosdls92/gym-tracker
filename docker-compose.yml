@@ -9,3 +9,26 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     restart: unless-stopped
+
+x-casaos:
+  architectures:
+    - amd64
+    - arm64
+  main: gym-tracker
+  author: carlosdls92
+  developer: carlosdls92
+  category: Health
+  icon: https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/dumbbell.png
+  title:
+    en_us: "Gym Tracker"
+    es_es: "Gym Tracker"
+  tagline:
+    en_us: "Workout plan tracker with offline HTML export"
+    es_es: "Seguimiento de planes de gimnasio con exportacion HTML offline"
+  description:
+    en_us: "FastAPI app to track workout plans with exercise GIFs, progress tracking, and offline HTML export."
+    es_es: "App FastAPI para seguir planes de gimnasio con GIFs de ejercicios, progreso y exportacion HTML offline."
+  index: /
+  port_map: "8087"
+  scheme: http
+  store_app_id: gym-tracker
