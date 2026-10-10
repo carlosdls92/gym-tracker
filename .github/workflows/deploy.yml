@@ -29,8 +29,8 @@ jobs:
         run: |
           echo "Esperando que la app arranque (primera vez descarga GIFs)..."
           for i in $(seq 1 40); do
-            if curl -sf http://localhost:8087/ > /dev/null; then
-              echo "gym-tracker OK en :8087 (intento $i)"
+            if curl -sf http://localhost:8082/ > /dev/null; then
+              echo "gym-tracker OK en :8082 (intento $i)"
               exit 0
             fi
             echo "  intento $i/40 — esperando 5s..."

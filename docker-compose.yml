@@ -3,7 +3,7 @@ services:
     build: .
     container_name: gym-tracker
     ports:
-      - "8087:8087"
+      - "8082:8082"
     environment:
       - MONGODB_URL=${MONGODB_URL:-mongodb://admin:admin@host.docker.internal:27017/gym_tracker?authSource=admin}
     extra_hosts:
@@ -29,6 +29,6 @@ x-casaos:
     en_us: "FastAPI app to track workout plans with exercise GIFs, progress tracking, and offline HTML export."
     es_es: "App FastAPI para seguir planes de gimnasio con GIFs de ejercicios, progreso y exportacion HTML offline."
   index: /
-  port_map: "8087"
+  port_map: "8082"
   scheme: http
   store_app_id: gym-tracker
