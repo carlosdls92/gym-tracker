@@ -21,6 +21,12 @@ jobs:
             --exclude='*.pyc' \
             . /var/lib/casaos/apps/gym-tracker/
           cd /var/lib/casaos/apps/gym-tracker
+          # Env unificado (MONGODB_URL con credenciales) → .env para la sustitución del compose
+          if [ -f /opt/github-runner/envs/gym-tracker.env ]; then
+            cp /opt/github-runner/envs/gym-tracker.env .env
+          else
+            echo "WARN: falta /opt/github-runner/envs/gym-tracker.env — se usará el default del compose"
+          fi
           docker compose down --remove-orphans || true
           docker compose build --no-cache
           docker compose up -d

@@ -2,12 +2,10 @@ services:
   gym-tracker:
     build: .
     container_name: gym-tracker
-    ports:
-      - "8082:8082"
+    # host network: mongo corre en host:27017 (replica set); igual que el resto de apps DLS.
+    network_mode: host
     environment:
-      - MONGODB_URL=${MONGODB_URL:-mongodb://admin:admin@host.docker.internal:27017/gym_tracker?authSource=admin}
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+      - MONGODB_URL=${MONGODB_URL:-mongodb://localhost:27017/gym_tracker}
     restart: unless-stopped
 
 x-casaos:
