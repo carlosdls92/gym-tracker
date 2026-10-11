@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>es.com.dls</groupId>
+        <artifactId>dls-media-integration</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>gym-tracker</artifactId>
+    <packaging>pom</packaging>
+    <name>Gym Tracker — Python FastAPI</name>
+
+    <!--
+        Goals disponibles:
+          mvn exec:exec@install-deps  → pip install -r requirements.txt
+          mvn exec:exec@run           → uvicorn app.main:app -reload -port 8082
+    -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+
+                    <execution>
+                        <id>install-deps</id>
+                        <goals><goal>exec</goal></goals>
+                        <configuration>
+                            <executable>${python.executable}</executable>
+                            <arguments>
+                                <argument>-m</argument>
+                                <argument>pip</argument>
+                                <argument>install</argument>
+                                <argument>-r</argument>
+                                <argument>requirements.txt</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>run</id>
+                        <goals><goal>exec</goal></goals>
+                        <configuration>
+                            <executable>uvicorn</executable>
+                            <arguments>
+                                <argument>app.main:app</argument>
+                                <argument>--reload</argument>
+                                <argument>--host</argument>
+                                <argument>0.0.0.0</argument>
+                                <argument>--port</argument>
+                                <argument>8082</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -18,7 +18,7 @@ x-casaos:
   author: carlosdls92
   developer: carlosdls92
   category: Health
-  icon: http://192.168.0.23:8011/static/logos/gym-tracker.jpg
+  icon: http://192.168.0.23:8082/static/logo.jpg
   title:
     en_us: "Gym Tracker"
     es_es: "Gym Tracker"
